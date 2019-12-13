@@ -1,71 +1,69 @@
 import React, { Component } from 'react';
 
-import { Table } from 'antd';
+import { Table ,Button} from 'antd';
+
 
 
 class User extends Component {
   columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
-      render: (aa) => (
-        <div onClick={
-          () => {
-            console.log(this)
-          }
-        }>
-          点我
-        </div>
-      ),
+      title: '用户id',
+      dataIndex: 'id',
     },
     {
-      title: 'Cash Assets',
-      className: 'column-money',
-      dataIndex: 'money',
+      title: '用户名',
+      className: 'UserName',
+      dataIndex: 'UserName',
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
+      title: '用户头像',
+      dataIndex: 'img',
     },
+    {
+      title: '操作',
+      dataIndex: 'handle',
+    }
   ];
 
   data = [
     {
       key: '1',
-      name: 'John Brown',
-      money: '￥300,000.00',
-      address: 'New York No. 1 Lake Park',
+      id: 'John Brown',
+      UserName: '￥300,000.00',
+      img: 'New York No. 1 Lake Park',
+      handle: '删除',
     },
     {
-      key: '2',
-      name: 'Jim Green',
-      money: '￥1,256,000.00',
-      address: 'London No. 1 Lake Park',
+      key: '1',
+      id: 'John Brown',
+      UserName: '￥300,000.00',
+      img: 'New York No. 1 Lake Park',
+      handle: '删除',
     },
     {
-      key: '3',
-      name: 'Joe Black',
-      money: '￥120,000.00',
-      address: 'Sidney No. 1 Lake Park',
+      key: '1',
+      id: 'John Brown',
+      UserName: '￥300,000.00',
+      img: 'New York No. 1 Lake Park',
+      handle: '删除',
     },
+    
   ];
 
-goto(a){
-
-}
   render () {
     const { columns, data } = this
     return (
       <div>
-
+        <header>
+        <Button onClick={this.handleAdd} type="primary" style={{ marginBottom: 16 }}>
+          添加用户
+        </Button>
+        </header>
         <Table
           columns={columns}
           dataSource={data}
-          bordered
-          title={() => 'Header'}
-          footer={() => 'Footer'}
         />
-        <div goto={to => this.goto(to)}></div>
+        
       </div>
     );
   }
