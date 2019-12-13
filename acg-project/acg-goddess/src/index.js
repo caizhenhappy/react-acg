@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+// 引入React
+import React from 'react'
+// 引入ReactDOM
+import ReactDOM from 'react-dom'
+// 引入App 组件
+import App from './App.jsx'
+// 渲染组件
+ReactDOM.render(<App/>,document.getElementById('root'))
 
 
-
-
-
-
-ReactDOM.render(<App />, document.getElementById('root'));
