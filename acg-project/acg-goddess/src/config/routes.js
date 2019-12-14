@@ -1,8 +1,7 @@
 // 引入路由组件
 // 用户管理
 import User from '../components/User/User.jsx'
-// 增加用户
-import UpdateUser from '../components/User/UpdateUser/UpdateUser.jsx'
+
 // 文章管理
 import Article from '../components/Article/Article.jsx'
 // 增加文章管理
@@ -25,11 +24,6 @@ export default[
     exact:true,
     path:'/user',
     component:User
-  },
-  {
-    exact:true,
-    path:'/user/updateUser',
-    component:UpdateUser
   },
   {
     exact:true,

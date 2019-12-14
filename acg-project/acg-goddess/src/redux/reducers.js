@@ -1,4 +1,4 @@
-import { GET_DATA, ADD_USER, REMOVE_USER, ADD_ART, REMOVE_ART, REMOVE_COM，SAVE_USER  } from './action-types'
+import { GET_DATA, ADD_USER, REMOVE_USER, ADD_ART, REMOVE_ART,  REMOVE_COM , SAVE_USER  } from './action-types'
 
 import { combineReducers } from 'redux'
 //数据的获取
