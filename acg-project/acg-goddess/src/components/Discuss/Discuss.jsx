@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 // 引入antd
 import { Table } from 'antd';
+import styles from './Dicuss.module.less'
+
 const columns = [
   {
     title: '消息id',
     dataIndex: 'id',
-    render: text => <a>{text}</a>,
+    
   },
   {
     title: '发消息的用户',
@@ -26,11 +28,12 @@ const columns = [
   {
     title: '操作',
     dataIndex: 'handle',
+    render: text => <a>{text}</a>,
   },
 ];
 const data = [
   {
-    key: '2',
+    key: '1',
     id: 'Jim Green',
     user: '￥1,256,000.00',
     address: 'London No. 1 Lake Park',
@@ -48,7 +51,7 @@ const data = [
     handle: '删除',
   },
   {
-    key: '2',
+    key: '3',
     id: 'Jim Green',
     user: '￥1,256,000.00',
     address: 'London No. 1 Lake Park',
@@ -57,7 +60,7 @@ const data = [
     handle: '删除',
   },
   {
-    key: '2',
+    key: '4',
     id: 'Jim Green',
     user: '￥1,256,000.00',
     address: 'London No. 1 Lake Park',
@@ -73,6 +76,7 @@ class Dicuss extends Component {
         <Table
           columns={columns}
           dataSource={data}
+          className={styles.modelTable}
         />
       </div>
     );

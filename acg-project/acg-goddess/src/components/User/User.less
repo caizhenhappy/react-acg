@@ -1,68 +1,106 @@
-.ant-table-thead{
-  display: none;
-} 
-.ant-table-tbody{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  tr{
-    flex: 0 0 20%;
-    margin-bottom: 20px;
-    td{
-      border-bottom: none;
-    }
-  }
-} 
-.userConent div{
-  margin-top:0px !important
-}
+// .userList{
+//   width:100%;
+//   height:100%;
+//   display:flex;
+//   flex-wrap:wrap;
+//   .userItem{
+//     width: 20%;
+//     flex-grow:1;
+//     margin:10px;
+//     .user{
+//       width: 100%;
+//       height:100%;
+//       display: flex;
+//       flex-direction:column;
+//       img{
+//         width: 100%;
+//         height:100%;
+//       }
+//     }
+//   }
+// }
 
-.ant-table-tbody > tr > td {
-  border-bottom: none !important
-}
-
-.userConent{
-  width:100%;
-  display: flex;
-  flex-direction: column;
-
-  
-  .userList{
+#userList{
+  .ant-table-thead{
+    display: none;
+  } 
+  .ant-table-tbody{
     display: flex;
-    margin-bottom: 20px;
-    
-  }
-    .ant-table-row ant-table-row-level-0{
-      display: flex;
-      flex-wrap: wrap;
-    }
-    .userItem{
-      height: 80%;
+    flex-wrap: wrap;
+    justify-content: center;
+    tr{
+      flex: 0 0 20%;
+      margin-bottom: 20px;
       
-      text-align: center;
-      &:hover{
-        cursor: pointer;
+      td{
+        border-bottom: none;
+        .userItem{
+          height: 80%;
+          text-align: center;
+          &:hover{
+            cursor: pointer;
+          }
+          .text{
+            font-weight: bold;
+          }
+          .text2{
+            text-align: left;
+            padding: 0 10px;
+          }
+        }
       }
     }
-      img{
-        border: 1px solid f2f2f2;
-        height: 250px;
+  } 
+  .userConent div{
+    margin-top:0px !important
+  }
+  
+  .ant-table-tbody > tr > td {
+    border-bottom: none !important
+  }
+  
+  .userConent{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+  
+    
+    .userList{
+      display: flex;
+      margin-bottom: 20px;
+      
+    }
+      .ant-table-row ant-table-row-level-0{
+        display: flex;
+        flex-wrap: wrap;
       }
-      div{
-        margin-top: 5px;
-        font-size: 18px;
+      .userItem{
+        height: 80%;
         
+        text-align: center;
+        &:hover{
+          cursor: pointer;
+        }
       }
-        .text{
-          font-weight: bold;
+        img{
+          border: 1px solid f2f2f2;
+          height: 250px;
         }
-        .text2{
-          text-align: left;
-          padding: 0 10px;
+        div{
+          margin-top: 5px;
+          font-size: 18px;
+          
         }
-  #Pagination{
-    margin:0 auto ;
-    margin-top: 20px;
+          .text{
+            font-weight: bold;
+          }
+          .text2{
+            text-align: left;
+            padding: 0 10px;
+          }
+    #Pagination{
+      margin:0 auto ;
+      margin-top: 20px;
+    }
   }
 }
-  

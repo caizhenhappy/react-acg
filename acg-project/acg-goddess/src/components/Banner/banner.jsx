@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Table, Drawer, Button } from "antd";
-import "./banner.less";
+import styles from "./banner.module.less";
 
 
 
@@ -21,7 +21,9 @@ class Banner extends Component {
   //删除
   deleteBanner = () => {};
   //添加图片轮播
-
+  addBanner=()=>{
+    this.onClose()
+  }
   //表头
   columns = [ 
     { title: "轮播图Id", dataIndex: "id", key: "id" },                                                    
@@ -49,7 +51,7 @@ class Banner extends Component {
   data = [
     {
       id: 1,
-      name:"http://img1.imgtn.bdimg.com/it/u=3942027719,2162533398&fm=26&gp=0.jpg",
+      name:"http://img3.imgtn.bdimg.com/it/u=3462392350,62626007&fm=26&gp=0.jpg",
       alt: '来谷唯湖',
       href:
         "New York No. 1users is John Brown",
@@ -58,7 +60,7 @@ class Banner extends Component {
     },
     {
       id: 2,
-      name: "http://img3.imgtn.bdimg.com/it/u=416288537,844461922&fm=26&gp=0.jpg",
+      name: "http://img3.imgtn.bdimg.com/it/u=2391667107,3258741112&fm=26&gp=0.jpg",
       alt: '坂上智代',
       href: "London No. 1 Lake Park",
       doit:
@@ -74,7 +76,7 @@ class Banner extends Component {
     },
     {
       id: 4,
-      name: 'http://img2.imgtn.bdimg.com/it/u=3216641527,1695557561&fm=26&gp=0.jpg',
+      name: 'http://img3.imgtn.bdimg.com/it/u=1155094793,592129984&fm=26&gp=0.jpg',
       alt: '蕾姆',
       href: "Sidney No. 1 Lake Park",
       doit:
@@ -91,8 +93,8 @@ class Banner extends Component {
   render() {
     return (
       <div>
-        <div style={{ marginBottom: "15px" }}>
-          <Button type="primary" onClick={this.showDrawer}>
+        <div style={{ padding: "15px" }}>
+          <Button type="primary" onClick={this.showDrawer}  style={{padding:'0 15px'}}>
             选择添加图片轮播
           </Button>
         </div>
@@ -103,6 +105,7 @@ class Banner extends Component {
           closable={false}
           onClose={this.onClose}
           visible={this.state.visible}
+          className={styles.drawerBg}
         >
           {this.bannerData.map(item => {
             return (
@@ -140,7 +143,7 @@ class Banner extends Component {
           })}
 
           <div style={{ textAlign: "center" }}>
-            <Button type="primary" onClick={this.addBanner}>
+            <Button type="primary" onClick={this.addBanner} style={{padding:'0 15px'}}>
               添加
             </Button>
           </div>
@@ -151,6 +154,7 @@ class Banner extends Component {
           columns={this.columns}
           dataSource={this.data}
           pagination={{pageSize:5}}
+          className={styles.modelTable}
         />
       </div>
     );

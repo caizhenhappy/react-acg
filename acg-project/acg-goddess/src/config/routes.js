@@ -1,8 +1,7 @@
 // 引入路由组件
 // 用户管理
 import User from '../components/User/User.jsx'
-// 增加用户
-import UpdateUser from '../components/User/UpdateUser/UpdateUser.jsx'
+
 // 文章管理
 import Article from '../components/Article/Article.jsx'
 // 增加文章管理
@@ -11,24 +10,20 @@ import AddArticle from '../components/Article/AddArticle/AddArticle.jsx'
 import  Discuss from '../components/Discuss/Discuss'
 // 轮播图的
 import Banner from '../components/Banner/banner.jsx'
+//引入首页
+import Home from '../components/Home/home.js'
 
 
 export default[
-
-  // {
-  //   exact:true,
-  //   path: '/login',
-  //   component: Login
-  // },	
+  {
+    exact:true,
+    path:'/home',
+    component:Home
+  },
   {
     exact:true,
     path:'/user',
     component:User
-  },
-  {
-    exact:true,
-    path:'/user/updateUser',
-    component:UpdateUser
   },
   {
     exact:true,

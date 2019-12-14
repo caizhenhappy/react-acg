@@ -1,71 +1,178 @@
 import React, { Component } from 'react';
- import { PageHeader,Button,Modal} from 'antd';
-//import { Table } from 'antd';
-
-
-// 引入样式
-import './User.less'
 import User1 from './User1.jsx'
-//引入新增用户组件
-//import AddUser from './AddUser/AddUser.jsx'
-//引入分页组件
-//import paginaTions from '../Pagination/Pagination.jsx'
+//import { PageHeader,Button,Modal} from 'antd';
+//import { Table } from 'antd';
+import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker, Icon, Table } from 'antd';
+import styles from './User.module.less'
+const { Option } = Select;
+//引入列表组件
+
+@Form.create()
 class User extends Component {
 
-    state = {
-      usesLength:0,
-      userLists:[],
-      visible:false,//新增用户窗口
-    };
-    //打开新增用户窗口
-    addDetail = () =>{
-      this.setState({
-        visible:true
-      })
+  state = {
+    visible: false,
+    addUserShow: false
+  };
+  showADD = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+  showUpdate = () => {
+    this.setState({
+      addUserShow: true,
+    });
+  };
+  onClose = () => {
+    this.setState({
+      visible: false,
+      addUserShow: false
+    });
+  };
+  columns = [
+    {
+      title: '用户id',
+      dataIndex: 'id',
+    },
+    {
+      title: '用户名',
+      className: 'UserName',
+      dataIndex: 'UserName',
+    },
+    {
+      title: '用户头像',
+      dataIndex: 'img',
+    },
+    {
+      title: '操作',
+      dataIndex: 'handle',
     }
-   //新增用户确定回调
-    addUserOk = () =>{
+  ];
+  data = [
+    {
+      key: '1',
+      id: 'John Brown',
+      UserName: '￥300,000.00',
+      img: 'New York No. 1 Lake Park',
+      handle: '删除',
+    },
+    {
+      key: '2',
+      id: 'John Brown',
+      UserName: '￥300,000.00',
+      img: 'New York No. 1 Lake Park',
+      handle: '删除',
+    },
+    {
+      key: '3',
+      id: 'John Brown',
+      UserName: '￥300,000.00',
+      img: 'New York No. 1 Lake Park',
+      handle: '删除',
+    },
+  ]
 
-    }
-
-    //新增用户取消回调
-    addUserCancel = () =>{
-
-    }
-  
   render () {
+    const { columns, data } = this
+    //console.log(this.props.Form)
+    const { getFieldDecorator } = this.props.form
     
-    // const { columns, data } = this
     return (
-      <div className='userConent'>
-          <PageHeader
-            style={{
-              border: '1px solid rgb(235, 237, 240)',
-            }}
-            title="用户列表"
-            extra={[
-              <Button key="1" type="primary" onClick="addDetail">
-                新增用户
-              </Button>,
-            ]}
-          />
-
-          <Modal
-            title="新增用户"
-            visible={this.visible}
-            onOk={this.addUserOk}
-            onCancel={this.addUserCancel}
-            okText='确定'
-            cancelText='取消'
-            width={500}
+      <div>
+        <header>
+          <Button onClick={this.showADD} type="primary" style={{ margin: 16, width: '100px' }} size='large'>
+            添加用户
+        </Button>
+          <Button onClick={this.showUpdate} type="primary" style={{ margin: 16, width: '100px' }} size='large'>
+            修改用户
+        </Button>
+        </header>
+        {/* <Table
+          columns={columns}
+          dataSource={data}
+          className={styles.modelTable}
+        /> */}
+        <div id="userList">
+          <User1 />
+        </div>
+        
+        <div>
+          <Drawer
+            title="添加用户"
+            width={300}
+            onClose={this.onClose}
+            visible={this.state.visible}
+            bodyStyle={{ paddingBottom: '150%' }}
+            className={styles.drawerBg}
           >
-           
-          </Modal>
+            <Form layout="vertical" hideRequiredMark>
+              <Row gutter={18}>
+                <Col span={18}>
+                  <Form.Item label="用户名">
+                     {getFieldDecorator('name', {
+                      rules: [{ required: true, message: '请输入用户名' }],
+                    })(<Input placeholder="请输入用户名" />)} 
+                  </Form.Item>
+                </Col>
+              </Row>
+              <Row gutter={18}>
+                <Col span={18}>
+                  <Form.Item label="密码">
+                    {getFieldDecorator('password', {
+                      rules: [{ required: true, message: '请输入密码' }],
+                    })(<Input placeholder="请输入密码" />)}
+                  </Form.Item>
+                </Col>
+              </Row>
+            </Form>
+            <Button type="primary" style={{ width: 190 }} >确认添加</Button>
+            <div
+              style={{
+                position: 'absolute',
+                right: 0,
+                bottom: 0,
+                width: '100%',
+                borderTop: '1px solid #e9e9e9',
+                padding: '10px 16px',
+                background: '#FFFDF9',
+                textAlign: 'right',
+              }}
+            >
+            </div>
+          </Drawer>
+          <Drawer
+            title="修改用户"
+            width={300}
+            onClose={this.onClose}
+            visible={this.state.addUserShow}
+            bodyStyle={{ paddingBottom: '150%' }}
+            className={styles.drawerBg}
+          >
+            <Form layout="vertical" hideRequiredMark>
+              <Row gutter={18}>
+                <Col span={18}>
+                  <Form.Item label="用户名">
+                    {getFieldDecorator('name', {
+                      rules: [{ required: true, message: '请输入用户名' }],
+                    })(<Input placeholder="请输入用户名" />)}
+                  </Form.Item>
+                </Col>
+              </Row>
+              <Row gutter={18}>
+                <Col span={18}>
+                  <Form.Item label="密码">
+                    {getFieldDecorator('password', {
+                      rules: [{ required: true, message: '请输入密码' }],
+                    })(<Input placeholder="请输入密码" />)}
+                  </Form.Item>
+                </Col>
+              </Row>
+            </Form>
+            <Button type="primary" style={{ width: 190 }} >确认修改</Button>
 
-
-          <div className="userList" ref='userList'>
-            <User1 />
-          </div>
+          </Drawer>
+        </div>
       </div>
     );
   }

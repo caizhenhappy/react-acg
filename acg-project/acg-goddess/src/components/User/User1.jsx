@@ -16,7 +16,7 @@ class User1 extends Component {
     {
       dataIndex:"item",
       render: (item) => (           
-        <div className="userItem">
+        <div className="userItem" >
           <img src={item.src} alt={item.alt} /> 
           <div className='text'>{item.text1}</div>
           <div className='text2'>{item.text2}</div>

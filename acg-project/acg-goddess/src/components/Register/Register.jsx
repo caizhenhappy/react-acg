@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 // 引入样式文件
-import "./Login.less"
+import './Register.less'
 // 引入axios
 import axios from 'axios'
 // 引入antd
 import { Form, Icon, Input, Button, message } from "antd"
 //引入路由
 import { NavLink } from 'react-router-dom'
-// // 引入connect
+// 引入connect
 // import { connect } from "react-redux"
-// // 引入action
+// 引入action
 // import { saveUser } from '../../redux/action-creators.js'
+import Avatar from './Avatar'
 
 const Item = Form.Item
 // 装饰器的使用
@@ -18,26 +19,41 @@ const Item = Form.Item
 //   saveUser
 // })
 @Form.create()
-class Login extends Component {
+class Register extends Component {
+  state = {
+    imgUrl: null
+  }
+  //获取头像
+  getImgUrl = ({ imgUrl }) => {
+    this.setState({
+      imgUrl
+    })
+  }
   handleSubmit = e => {
     // 阻止默认事件
     e.preventDefault();
     // 表单验证是否都通过了
+    console.log("点击了", this.props)
     this.props.form.validateFields((error, values) => {
+      console.log('我执行了', values)
       // 错误
       if (!error) {
         // 获取账号和密码
         const { username, password } = values
+        const { imgUrl } = this.state
+        console.log(username, password)
+        if (!imgUrl) {
+          message.error('图片未上传完毕')
+          return
+        }
         // 发送异步请求
-        axios.post(`http://localhost:3000/api/login`, { username, password })
+        console.log(username, password, imgUrl)
+        axios.post(`http://localhost:3000/api/user/add`, { username, password,imgUrl })
           .then(({ data }) => {
             // 判断发送的请求是否是成功的
             if (data.status === 0) {
-              // 请求成功,提示信息登录成功
+              message.success('注册成功')
               console.log(data)
-              message.success('登录成功')
-              // 保存用户信息
-              // this.props.saveUser(data.data)
 
             } else {
               // 请求失败了
@@ -47,11 +63,17 @@ class Login extends Component {
           .catch((error) => {
             message.error("请求失败:" + error)
           })
+
+
+        //重置imgUrl
+        this.setState({
+          imgUrl: null
+        })
       } else {
-        // 发送异步请求
         message.error("表单验证失败")
       }
     })
+    console.log('僵硬')
   }
   // 做表单的验证
   validator = (rule, value, callback) => {
@@ -75,11 +97,19 @@ class Login extends Component {
   render () {
     const { getFieldDecorator } = this.props.form
     return (
-      <div className="login">
-        <div className="login_container">
-          <h2 >用户登录</h2>
-          <Form onSubmit={this.handleSubmit} className="login-form">
-            <Item>
+      <div className="register">
+        <div className="register_container">
+          <h2 >用户注册</h2>
+          <Form onSubmit={this.handleSubmit} className="register-form">
+            <Item className="inputAvatar">
+              {getFieldDecorator('upload', {
+                valuePropName: 'fileList',
+                onChange: this.getImgUrl
+              })(
+                <Avatar />
+              )}
+            </Item>
+            <Item className="inputText">
               {
                 // 用户名,必须是大于4位,必须是小于12位,用户名只能是数字/字母/下划线
                 getFieldDecorator('username', {
@@ -93,14 +123,14 @@ class Login extends Component {
                   <Input
                     prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                     placeholder="帐号"
-                    className="login-input"
+                    className="register-input"
                     size="large"
                   />
                 )
               }
 
             </Item>
-            <Item>
+            <Item className="inputText">
               {
                 getFieldDecorator('password', {
                   rules: [
@@ -111,7 +141,7 @@ class Login extends Component {
                     prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                     type="password"
                     placeholder="密码"
-                    className="login-input"
+                    className="register-input"
                     size="large"
                   />
                 )
@@ -119,13 +149,13 @@ class Login extends Component {
 
             </Item>
             <Item>
-              <Button type="primary" htmlType="submit" className="login-form-button">
-                登&nbsp;&nbsp;&nbsp;&nbsp;录
+              <Button type="primary" htmlType="submit" className="register-form-button">
+                注&nbsp;&nbsp;&nbsp;&nbsp;册
               </Button>
             </Item>
-            <p className="tip">如果你还没有账户请
-              <NavLink to="/register" activeClassName="regLog">注册</NavLink>
-            </p>
+            <p className="tip">我以前有账号,前去
+              <NavLink to="/login" activeClassName="regAct">登陆</NavLink>
+            </p >
           </Form>
         </div>
       </div>
@@ -133,4 +163,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Register;
