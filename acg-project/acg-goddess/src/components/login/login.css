@@ -1,0 +1,48 @@
+.login{
+  width: 100%;
+  height: 100%;
+  background-image: url("../../assets/images/ia_500000004.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.login-input{
+  height: 60px; 
+}
+.ant-input{
+  border-color:#ffedef !important;
+}
+.login_content .ant-input:hover{
+  border-color:#ffd9e4 !important;
+}
+.login-input ::placeholder{
+  font-size: 20px;
+}
+.login_content{
+    width:500px;
+    height:400px;
+    background-color: #FFF;
+    margin: 150px auto;
+    padding:30px;
+}
+.login_content h2{
+  font-size:26px;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom:30px;
+}
+.login-form-button{
+    width:100%;
+    height: 50px;
+    font-size: 20px;
+    background-color: #ffedef;
+    border-color:#ffd9e4;
+    color: #3b3b3b;
+  }
+  .ant-btn:hover, .ant-btn:focus{
+    color: #3b3b3b;
+    background-color: #fed8e3;
+    border-color: #ffedef;
+  }
+ 
+  

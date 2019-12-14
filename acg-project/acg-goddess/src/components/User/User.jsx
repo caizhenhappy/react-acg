@@ -42,16 +42,16 @@ class User extends Component {
             style={{
               border: '1px solid rgb(235, 237, 240)',
             }}
-            title="女神列表"
-            // extra={[
-            //   <Button key="1" type="primary" onClick="addDetail">
-            //     新增女神
-            //   </Button>,
-            // ]}
+            title="用户列表"
+            extra={[
+              <Button key="1" type="primary" onClick="addDetail">
+                新增用户
+              </Button>,
+            ]}
           />
 
           <Modal
-            title="新增分类"
+            title="新增用户"
             visible={this.visible}
             onOk={this.addUserOk}
             onCancel={this.addUserCancel}
@@ -59,7 +59,7 @@ class User extends Component {
             cancelText='取消'
             width={500}
           >
-            
+           
           </Modal>
 
 
