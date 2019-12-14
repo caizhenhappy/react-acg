@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // 引入antd
-import { Table, PageHeader } from 'antd';
+import { Table } from 'antd';
 const columns = [
   {
     title: '消息id',

@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 import logo from '../../img/logo.png'
 // 引入样式
 import './BasicLayout.css'
-// 引入组件
-import Dicuss from '../Dicuss/Dicuss.jsx'
-import Article from '../Article/Article.jsx'
+
 // 引入antd
 import { Layout, Breadcrumb } from 'antd';
 import LeftNav from './LeftNav/LeftNav.jsx';
@@ -13,7 +11,7 @@ const { Header, Content, Footer, Sider } = Layout;
 
 
 
-class Home extends Component {
+class BasictLayout extends Component {
   state = {
     collapsed: false,
   };
@@ -23,14 +21,14 @@ class Home extends Component {
   };
   render () {
     return (
-      <Layout style={{ minHeight: '100vh' ,background: '#ffedef',}}>
-        <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
+      <Layout style={{ minHeight: '100vh' }}>
+        <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse} >
         <div className="basic-layout-logo">
             <img src={logo} alt="logo" />
           </div>
           <LeftNav />
        </Sider>
-        <Layout style={{ background: '#ffedef',}}>
+        <Layout >
           <Header style={{ padding: 23, }} className='header'>
             ACG 女神管理系统
           </Header>
@@ -39,10 +37,9 @@ class Home extends Component {
               <Breadcrumb.Item>女神~</Breadcrumb.Item>
             </Breadcrumb>
             <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-              {/* <User /> */}
-               <Article />
-              {/* <AddArticle /> */}
-              {/* <Dicuss /> */}
+              {
+                this.props.children
+              }
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
@@ -51,4 +48,4 @@ class Home extends Component {
     );
   }
 }
-export default Home;
+export default BasictLayout;

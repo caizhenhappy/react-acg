@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Card, Button } from 'antd';
 // 引入样式
 import './Article.css'
-const { Meta } = Card;
 
 
 class Article extends Component {
@@ -16,7 +15,7 @@ class Article extends Component {
           {
             test.map((te, index) => (
               <Card
-                style={{ width: 500 }}
+                style={{ width: 500 ,marginBottom:'30px'}}
                 className='articleItem'
                 cover={
                   <img
@@ -25,7 +24,7 @@ class Article extends Component {
                   />
                 }
               >
-                <div class='btn'>
+                <div className='btn'>
                   <Button type="primary">修改</Button>
                   <Button type="primary">删除</Button>
                 </div>
@@ -41,7 +40,7 @@ class Article extends Component {
             />
           }
         >
-          <div class='btn'>
+          <div className='btn'>
           <Button type="primary">Primary</Button>
           <Button type="primary">Primary</Button>
           </div>

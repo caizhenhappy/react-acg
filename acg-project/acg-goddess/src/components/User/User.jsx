@@ -1,10 +1,30 @@
 import React, { Component } from 'react';
 
-import { Table ,Button} from 'antd';
 
+import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker, Icon ,Table} from 'antd';
 
+const { Option } = Select;
 
+@Form.create()
 class User extends Component {
+
+  state = { visible: false };
+  showDrawer = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+  onClose = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+
+  handleAdd=()=>{
+    /* console.log(this.props.push('/user/updateUser')); */
+    console.log(this.props.history.push)
+    this.props.history.push('/user/updateUser')
+  }
   columns = [
     {
       title: '用户id',
@@ -52,10 +72,12 @@ class User extends Component {
 
   render () {
     const { columns, data } = this
+    const { getFieldDecorator } = this.props.form;
+
     return (
       <div>
         <header>
-        <Button onClick={this.handleAdd} type="primary" style={{ marginBottom: 16 }}>
+        <Button onClick={this.handleAdd} type="primary" style={{ marginBottom: 16 ,width:'100px'}} size='large'>
           添加用户
         </Button>
         </header>
@@ -63,7 +85,129 @@ class User extends Component {
           columns={columns}
           dataSource={data}
         />
-        
+        <div>
+        <Button type="primary" onClick={this.showDrawer}>
+          <Icon type="plus" /> 新的按钮
+        </Button>
+        <Drawer
+          title="Create a new account"
+          width={720}
+          onClose={this.onClose}
+          visible={this.state.visible}
+          bodyStyle={{ paddingBottom: 80 }}
+        >
+          <Form layout="vertical" hideRequiredMark>
+            <Row gutter={16}>
+              <Col span={12}>
+                <Form.Item label="Name">
+                  {getFieldDecorator('name', {
+                    rules: [{ required: true, message: 'Please enter user name' }],
+                  })(<Input placeholder="Please enter user name" />)}
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item label="Url">
+                  {getFieldDecorator('url', {
+                    rules: [{ required: true, message: 'Please enter url' }],
+                  })(
+                    <Input
+                      style={{ width: '100%' }}
+                      addonBefore="http://"
+                      addonAfter=".com"
+                      placeholder="Please enter url"
+                    />,
+                  )}
+                </Form.Item>
+              </Col>
+            </Row>
+            <Row gutter={16}>
+              <Col span={12}>
+                <Form.Item label="Owner">
+                  {getFieldDecorator('owner', {
+                    rules: [{ required: true, message: 'Please select an owner' }],
+                  })(
+                    <Select placeholder="Please select an owner">
+                      <Option value="xiao">Xiaoxiao Fu</Option>
+                      <Option value="mao">Maomao Zhou</Option>
+                    </Select>,
+                  )}
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item label="Type">
+                  {getFieldDecorator('type', {
+                    rules: [{ required: true, message: 'Please choose the type' }],
+                  })(
+                    <Select placeholder="Please choose the type">
+                      <Option value="private">Private</Option>
+                      <Option value="public">Public</Option>
+                    </Select>,
+                  )}
+                </Form.Item>
+              </Col>
+            </Row>
+            <Row gutter={16}>
+              <Col span={12}>
+                <Form.Item label="Approver">
+                  {getFieldDecorator('approver', {
+                    rules: [{ required: true, message: 'Please choose the approver' }],
+                  })(
+                    <Select placeholder="Please choose the approver">
+                      <Option value="jack">Jack Ma</Option>
+                      <Option value="tom">Tom Liu</Option>
+                    </Select>,
+                  )}
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item label="DateTime">
+                  {getFieldDecorator('dateTime', {
+                    rules: [{ required: true, message: 'Please choose the dateTime' }],
+                  })(
+                    <DatePicker.RangePicker
+                      style={{ width: '100%' }}
+                      getPopupContainer={trigger => trigger.parentNode}
+                    />,
+                  )}
+                </Form.Item>
+              </Col>
+            </Row>
+            <Row gutter={16}>
+              <Col span={24}>
+                <Form.Item label="Description">
+                  {getFieldDecorator('description', {
+                    rules: [
+                      {
+                        required: true,
+                        message: 'please enter url description',
+                      },
+                    ],
+                  })(<Input.TextArea rows={4} placeholder="please enter url description" />)}
+                </Form.Item>
+              </Col>
+            </Row>
+          </Form>
+          <div
+            style={{
+              position: 'absolute',
+              right: 0,
+              bottom: 0,
+              width: '100%',
+              borderTop: '1px solid #e9e9e9',
+              padding: '10px 16px',
+              background: '#fff',
+              textAlign: 'right',
+            }}
+          >
+            <Button onClick={this.onClose} style={{ marginRight: 8 }}>
+              Cancel
+            </Button>
+            <Button onClick={this.onClose} type="primary">
+              Submit
+            </Button>
+          </div>
+        </Drawer>
+      </div>
       </div>
     );
   }
