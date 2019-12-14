@@ -1,0 +1,97 @@
+.admin{
+  width: 100%;
+  height: 100%;
+  background-image:url('../../assets/images/ia_500000004.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+/* 头部样式 */
+.admin-header{
+  width: 100%;
+  height: 200px;
+  position: relative;
+}
+.admin-header img{
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+.admin-header span{
+  font-size: 50px;
+  font-weight: bold;
+  position: absolute;
+  top: 55px;
+  left: 125px;
+  color: #03a9f4;
+  text-shadow:0 0 8px #fff;
+  font-style: italic;
+}
+/* 内容区样式 */
+.ant-tabs-bar{
+  opacity: .9;
+  background-color: rgba(74, 74, 74, 0.83);
+}
+.admin-content{
+  width: 75%;
+  height: 100%;
+  margin: -60px auto 0;
+  opacity: 1;
+}
+.ant-tabs-nav-scroll{
+  height: 60px;
+} 
+.ant-tabs-nav .ant-tabs-tab {
+  font-size: 24px;
+  color: #fff;
+}
+.ant-tabs-nav .ant-tabs-tab-active{
+  font-size: 24px;
+  color: #03a9f4;
+}
+
+.ant-tabs-nav .ant-tabs-tab:hover{
+  color: #03a9f4;
+}
+.ant-tabs-nav .ant-tabs-ink-bar {
+  color: #03a9f4;
+}
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 160px;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+}
+.ant-carousel .slick-slide img {
+  background-size: cover;
+}
+.admin-tab{
+
+}
+.admin-swiper{
+
+}
+.admin-list{
+
+}
+.adminListItem{
+
+}
+.adminListItem{
+
+}
+.listItemHeader{
+
+}
+.listItemTitle{
+
+}
+.listItemImg{
+
+}
+.listItemPeriod{
+
+}
+.listItemFooter{
+
+}
