@@ -5,12 +5,14 @@ import './Article.css'
 
 
 class Article extends Component {
-  
+  addArticle=()=>{
+  this.props.history.push('/article/addArticle')
+  }
   render () {
     const test = [0, 1, 2, 3]
     return (
       <div className='article' >
-         <Button type="primary" className='titleBtn' size='large'>添加文章</Button>
+         <Button type="primary" className='titleBtn' size='large' onClick={this.addArticle}>添加文章</Button>
         <div className='articleList'>
           {
             test.map((te, index) => (
@@ -31,20 +33,6 @@ class Article extends Component {
               </Card>
             ))
           }
-          {/* <Card
-          style={{ width: 300 }}
-          cover={
-            <img
-              alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-          }
-        >
-          <div className='btn'>
-          <Button type="primary">Primary</Button>
-          <Button type="primary">Primary</Button>
-          </div>
-        </Card> */}
         </div>
       </div>
 
