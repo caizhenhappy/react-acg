@@ -11,15 +11,16 @@ import AddArticle from '../components/Article/AddArticle/AddArticle.jsx'
 import  Discuss from '../components/Discuss/Discuss'
 // 轮播图的
 import Banner from '../components/Banner/banner.jsx'
+//引入首页
+import Home from '../components/home/home'
 
 
 export default[
-
-  // {
-  //   exact:true,
-  //   path: '/login',
-  //   component: Login
-  // },	
+  {
+    exact:true,
+    path:'/home',
+    component:Home
+  },
   {
     exact:true,
     path:'/user',
