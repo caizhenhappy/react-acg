@@ -7,16 +7,16 @@ import axios from 'axios'
 import { Form, Icon, Input, Button, message } from "antd"
 //引入路由
 import { NavLink } from 'react-router-dom'
-// 引入connect
-import { connect } from "react-redux"
-// 引入action
-import { saveUser } from '../../redux/action-creators.js'
+// // 引入connect
+// import { connect } from "react-redux"
+// // 引入action
+// import { saveUser } from '../../redux/action-creators.js'
 
 const Item = Form.Item
 // 装饰器的使用
-@connect(null, {
-  saveUser
-})
+// @connect(null, {
+//   saveUser
+// })
 @Form.create()
 class Login extends Component {
   handleSubmit = e => {
@@ -37,7 +37,7 @@ class Login extends Component {
               console.log(data)
               message.success('登录成功')
               // 保存用户信息
-              this.props.saveUser(data.data)
+              // this.props.saveUser(data.data)
 
             } else {
               // 请求失败了

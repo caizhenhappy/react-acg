@@ -27,8 +27,6 @@ router.post('/api/login', async (req, res) => {
     })
   }
 
-  // const role = await Roles.findById({_id: user.roleId});
-
   // 返回登陆成功信息(包含user)
   const userToken = {
     id: user._id
@@ -44,7 +42,6 @@ router.post('/api/login', async (req, res) => {
       user: {
         username: user.username,
         createTime: user.createTime,
-        // menus: role ? role.menus : []
       }
     }
   })
@@ -52,6 +49,5 @@ router.post('/api/login', async (req, res) => {
 
 // 其他路由
 router.use(userRouter);
-// router.use(roleRouter);
 
 module.exports = router;
