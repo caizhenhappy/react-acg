@@ -5,24 +5,18 @@
 }
 .titleBtn{
   width: 100px;
-  overflow: hidden;
 }
 .articleList{
   width: 100%;
   display: flex;
   flex-wrap:wrap;
-  
-  padding-top:30px;
+  margin-left:60px;
 }
 .articleItem{
   margin:30px;
-  /* flex-flow:4; */
-  padding-top:30px;
+  flex-flow:4;
 }
 .btn{
   display: flex;
   justify-content:space-around
-}
-.crudBtn {
-  overflow: hidden;
 }

@@ -3,19 +3,22 @@ import { Card, Button } from 'antd';
 // 引入样式
 import './Article.css'
 
+const { Meta } = Card;
+
 
 class Article extends Component {
-  
+
   render () {
+   
     const test = [0, 1, 2, 3]
     return (
-      <div className='article' >
+      <div className='article'  >
          <Button type="primary" className='titleBtn' size='large'>添加文章</Button>
         <div className='articleList'>
           {
             test.map((te, index) => (
               <Card
-                style={{ width: 500 ,marginBottom:'30px'}}
+                style={{ width: 500 }}
                 className='articleItem'
                 cover={
                   <img
@@ -24,9 +27,9 @@ class Article extends Component {
                   />
                 }
               >
-                <div className='btn'>
-                  <Button className='crudBtn' type="primary">修改</Button>
-                  <Button className='crudBtn' type="primary">删除</Button>
+                <div class='btn'>
+                  <Button type="primary">修改</Button>
+                  <Button type="primary">删除</Button>
                 </div>
               </Card>
             ))
@@ -40,7 +43,7 @@ class Article extends Component {
             />
           }
         >
-          <div className='btn'>
+          <div class='btn'>
           <Button type="primary">Primary</Button>
           <Button type="primary">Primary</Button>
           </div>

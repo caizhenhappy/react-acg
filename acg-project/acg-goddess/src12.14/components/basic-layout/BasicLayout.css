@@ -1,14 +1,15 @@
 .basic-layout-logo{
   width:200px;
   height:200px;
+  margin-left:-20px ;
 }
 .basic-layout-logo img{
   width: 100%;
-  height:100%;
+    height:100%;
 }
 .header{
+  background-color: #ffedef;
   font-size:30px;
   line-height: 30px;
   text-align: center;
-  color:'#6C7B95';
 }

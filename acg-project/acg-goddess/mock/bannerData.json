@@ -1,0 +1,20 @@
+ {
+  "code": 0,
+  "banner": [
+    {
+      "id": 1,
+      "bannerImg": "'http://img3.imgtn.bdimg.com/it/u=290926700,936962617&fm=26&gp=0.jpg'",
+      "alt":"123124"
+    },
+    {
+      "id": 2,
+      "bannerImg": "'http://img3.imgtn.bdimg.com/it/u=755569413,2521115442&fm=26&gp=0.jpg'",
+      "alt":"'[AVG]2'"
+    },
+    {
+      "id": 3,
+      "bannerImg": "'http://img3.imgtn.bdimg.com/it/u=2009776313,1734520426&fm=26&gp=0.jpg'",
+      "alt":"'[AVG]3'"
+    }
+  ]
+}
