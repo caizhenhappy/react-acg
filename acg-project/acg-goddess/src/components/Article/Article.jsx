@@ -17,7 +17,7 @@ class Article extends Component {
           {
             test.map((te, index) => (
               <Card
-                style={{ width: 500 ,marginBottom:'30px'}}
+                key={index}
                 className='articleItem'
                 cover={
                   <img

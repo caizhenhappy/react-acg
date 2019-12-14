@@ -30,7 +30,7 @@ const columns = [
 ];
 const data = [
   {
-    key: '2',
+    key: '1',
     id: 'Jim Green',
     user: '￥1,256,000.00',
     address: 'London No. 1 Lake Park',
@@ -48,7 +48,7 @@ const data = [
     handle: '删除',
   },
   {
-    key: '2',
+    key: '3',
     id: 'Jim Green',
     user: '￥1,256,000.00',
     address: 'London No. 1 Lake Park',
@@ -57,7 +57,7 @@ const data = [
     handle: '删除',
   },
   {
-    key: '2',
+    key: '4',
     id: 'Jim Green',
     user: '￥1,256,000.00',
     address: 'London No. 1 Lake Park',
