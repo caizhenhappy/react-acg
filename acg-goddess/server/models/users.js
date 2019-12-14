@@ -9,8 +9,8 @@ const userSchema = new mongoose.Schema({
   username: {type: String, required: true}, // 用户名
   password: {type: String, required: true}, // 密码
   createTime: {type: Number, default: Date.now},
-  isAdmin: Boolean,
-  imgUrl:String
+  isAdmin: {type: Boolean, default: false},
+  imgUrl:{type: String, default: './images/avatar.jpg'}
 });
 
 // 3. 定义Model(与集合对应, 可以操作集合)

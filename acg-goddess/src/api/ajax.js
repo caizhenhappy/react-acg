@@ -17,15 +17,17 @@ axios.interceptors.request.use(config => {
     data = qs.stringify(data)
   }
   // 请求的时候获取token,如果需要携带token,则把token添加到请求头中
-  const { token } = store.getState().user
+  const { token } = store.getState().users
   if (token) {
     // 设置请求头
     config.headers.authorization = token
   }
+  console.log(config)
   return config
 })
 // 响应拦截器
 axios.interceptors.response.use(response => {
+  console.log(response)
   return response.data
 }, error => {
   message.error('请求出错' + error.message)

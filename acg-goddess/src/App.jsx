@@ -1,19 +1,33 @@
+// 创建
 import React, { Component } from 'react';
-// 引入routes
+import { BrowserRouter as Router, Link, Switch, Redirect, Route } from 'react-router-dom'
+// 引入 routes 
 import routes from './config/routes.js'
-// 引入路由
-import { BrowserRouter as Router, Route ,Switch} from 'react-router-dom'
+import Login from './components/Login/Login'
+import Admin from './components/admin/admin'
+import Register from './components/Register/Register'
+// 引入 css
+// 引入最外面的大组件 BasicLayout组件
+import BasicLayout from './components/basic-layout/BasicLayout.jsx'
+
+
 class App extends Component {
-  render() {
+  render () {
     return (
       <Router>
-       <Switch>
-       {
-          routes.map((route,index)=>(<Route key={index} {...route} />))
-        }
-       </Switch>
-
-
+        <Switch>
+          <Route path='/' exact component={Admin}></Route>
+          <Route path="/login" exact component={Login} />
+          <Route path="/register" exact component={Register} />
+          <BasicLayout>
+            <Switch>
+              {
+                routes.map((route,index)=>(<Route key={index}{...route}/>))
+              }
+            </Switch>
+          </BasicLayout>
+          {/* <Redirect to="/"></Redirect> */}
+        </Switch>
       </Router>
     );
   }

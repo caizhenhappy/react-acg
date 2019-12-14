@@ -5,7 +5,7 @@ const isDev = process.env.NODE_ENV === 'development';
 let SERVER_CONFIG, DB_CONFIG;
 
 // 不需要检查token的路径
-const UN_CHECK_PATH = ['/api/login','/api/user/add','api/img'];
+const UN_CHECK_PATH = ['/api/login','/api/user/add'];
 
 // 由于目前没有上线服务器，所以地址一致
 if (isDev) {

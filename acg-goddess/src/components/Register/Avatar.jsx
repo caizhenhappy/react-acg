@@ -15,7 +15,7 @@ function beforeUpload(file) {
   }
   const isLt = file.size / 1024 / 100;
   if (!isLt) {
-    message.error('头像图片大小不能超过100kb');
+    message.error('o_<头像图片大小不能超过100kb');
   }
   return isJpgOrPng && isLt;
 }
@@ -42,8 +42,6 @@ class Avatar extends React.Component {
       return;
     }
     if (info.file.status === 'done') {
-      console.log(this)
-      // Get this url from response in real world.
       getBase64(info.file.originFileObj, imageUrl =>{
         this.setState({
           imageUrl,

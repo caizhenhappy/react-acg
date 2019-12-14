@@ -10,8 +10,6 @@ const verify = require('./middleware/verify');
 const { SERVER_CONFIG } = require('./config'); //配置
 //用于创建超级用户
 const Users = require('./models/users');
-// //用于创建超级角色
-// const Roles = require('./models/roles');
 
 const app = express();
 
@@ -22,19 +20,6 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json({}));
 // 声明使用解析cookie数据的中间件
 app.use(cookieParser());
-
-// 设定CORS跨域
-/*app.use((req, res, next) => {
-  res.set('Access-Control-Allow-Origin', '*');
-  res.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-  res.set('Access-Control-Allow-Headers', 'content-type, authorization, accept');
-  // res.set('Access-Control-Max-Age', 86400);
-  // 快速返回预检请求响应
-  if (req.method.toLowerCase() === 'options') {
-    return res.end();
-  }
-  next();
-});*/
 
 // 权限验证
 app.use(verify);
@@ -52,32 +37,10 @@ app.listen(SERVER_CONFIG.port, (err) => {
 Users.findOne({username: 'admin'}).then(async (user) => {
   if(!user) {
     try {
-      // 创建权限;
-      // const role = await Roles.create({
-      //   name: '管理员',
-      //   authName: 'root',
-      //   authTime: Date.now(),
-      //   createTime: Date.now(),
-      //   menus: [
-      //     "/",
-      //     "/products",
-      //     "/category",
-      //     "/product",
-		  // "/product/saveupdate",
-		  // "/product/detail",
-      //     "/user",
-      //     "/role",
-      //     "/charts",
-      //     "/charts/bar",
-      //     "/charts/line",
-      //     "/charts/pie"
-      //   ],
-      // });
-      // 创建用户
-      const user = await Users.create({username: 'admin', password: md5('admin'), isAdmin: true });
-      console.log(user,`创建超级管理员用户成功~  用户名: admin 密码: admin`);
+      const user = await Users.create({username: 'admin', password: md5('admin'), isAdmin: true,imgUrl:'./images/avatar.jpg' });
+      console.log(user,`创建初始管理员用户成功~  用户名: admin 密码: admin`);
     } catch (e) {
-      console.log('创建超级管理员用户失败~', e);
+      console.log('创建初始管理员用户失败~', e);
     }
   }
 });

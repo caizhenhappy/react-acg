@@ -1,23 +1,15 @@
 import React, { Component } from 'react';
 // 引入样式文件
 import './Register.less'
-// 引入axios
-import axios from 'axios'
 // 引入antd
 import { Form, Icon, Input, Button, message } from "antd"
 //引入路由
 import { NavLink } from 'react-router-dom'
-// 引入connect
-// import { connect } from "react-redux"
-// 引入action
-// import { saveUser } from '../../redux/action-creators.js'
+// 引入api接口
+import { reRegister } from '../../api/index'
 import Avatar from './Avatar'
 
 const Item = Form.Item
-// 装饰器的使用
-// @connect(null, {
-//   saveUser
-// })
 @Form.create()
 class Register extends Component {
   state = {
@@ -34,41 +26,30 @@ class Register extends Component {
     e.preventDefault();
     // 表单验证是否都通过了
     console.log("点击了", this.props)
-    this.props.form.validateFields((error, values) => {
+    this.props.form.validateFields(async (error, values) => {
       console.log('我执行了', values)
       // 错误
       if (!error) {
         // 获取账号和密码
         const { username, password } = values
         const { imgUrl } = this.state
-        console.log(username, password)
         if (!imgUrl) {
           message.error('图片未上传完毕')
           return
         }
         // 发送异步请求
-        console.log(username, password, imgUrl)
-        axios.post(`http://localhost:3000/api/user/add`, { username, password,imgUrl })
-          .then(({ data }) => {
-            // 判断发送的请求是否是成功的
-            if (data.status === 0) {
-              message.success('注册成功')
-              console.log(data)
-
-            } else {
-              // 请求失败了
-              message.error(data.msg)
-            }
+        const result = await reRegister({ username, password, imgUrl })
+        if(!result.status){
+          message.success(result.data)
+          //重置图片
+          this.setState({
+            imgUrl: null
           })
-          .catch((error) => {
-            message.error("请求失败:" + error)
-          })
-
-
-        //重置imgUrl
-        this.setState({
-          imgUrl: null
-        })
+          //跳转
+          this.props.history.replace('/login')
+        }else{
+          message.error(result.msg)
+        }
       } else {
         message.error("表单验证失败")
       }

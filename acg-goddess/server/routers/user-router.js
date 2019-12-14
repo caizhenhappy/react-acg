@@ -8,12 +8,9 @@ const { PRIVATE_KEY } = require('../config');
 // 添加用户
 router.post('/api/user/add', async (req, res) => {
   // 读取请求参数数据
-  console.log(req.body)
   const { username, password,imgUrl } = req.body;
   // 处理: 判断用户是否已经存在, 如果存在, 返回提示错误的信息, 如果不存在, 保存
   // 查询(根据username)
-  const isAdmin = false;
-  if(!imgUrl) req.body.imgUrl = './images/avatar.jpg';
   try {
     let user = await Users.findOne({ username });
     console.log(user)
@@ -21,16 +18,12 @@ router.post('/api/user/add', async (req, res) => {
       res.json({ status: 1, msg: '此用户已存在' });
       return;
     }
-    user = await Users.create({ ...req.body, password: md5(password), isAdmin });
-
+    user = await Users.create({ ...req.body, password: md5(password),imgUrl });
     res.json({
       status: 0,
-      data: {
-        username, isAdmin, createTime: user.createTime, _id: user._id, imgUrl:req.body.imgUrl
-      }
+      data: "注册成功"
     });
   } catch (error) {
-
     res.json({ status: 1, msg: '添加用户失败' });
   }
 
@@ -78,7 +71,7 @@ router.get('/api/auto_login',async (req, res) =>{
       res.json({ status: 0, data: users })
     })
     .catch(error => {
-      res.json({ status: 1, msg: 'token识别失败,请登录' })
+      res.json({ status: 1, msg: '请重新登录' })
     })
 })
 

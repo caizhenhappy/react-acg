@@ -6,9 +6,6 @@ const md5 = require('blueimp-md5');
 const jwt = require('jsonwebtoken');
 const { PRIVATE_KEY } = require('../config');
 const Users = require('../models/users');
-// const Roles = require('../models/roles');
-
-// const roleRouter = require('./role-router');
 const userRouter = require('./user-router');
 // 得到路由器对象
 const router = express.Router();
@@ -19,14 +16,13 @@ router.post('/api/login', async (req, res) => {
   const { username, password } = req.body;
 
   const user = await Users.findOne({username, password: md5(password)}, {password: 0, __v: 0});
-
+  console.log(user)
   if (!user) {
     return res.json({
       status: 1,
       msg: '用户名或密码不正确!'
     })
   }
-
   // 返回登陆成功信息(包含user)
   const userToken = {
     id: user._id
@@ -42,6 +38,8 @@ router.post('/api/login', async (req, res) => {
       user: {
         username: user.username,
         createTime: user.createTime,
+        isAdmin:user.isAdmin,
+        imgUrl:user.imgUrl
       }
     }
   })

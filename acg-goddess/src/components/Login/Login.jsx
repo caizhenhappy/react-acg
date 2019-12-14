@@ -1,55 +1,44 @@
 import React, { Component } from 'react';
 // 引入样式文件
 import "./Login.less"
-// 引入axios
-import axios from 'axios'
 // 引入antd
 import { Form, Icon, Input, Button, message } from "antd"
 //引入路由
 import { NavLink } from 'react-router-dom'
-// // 引入connect
-// import { connect } from "react-redux"
-// // 引入action
-// import { saveUser } from '../../redux/action-creators.js'
+// 引入connect
+import { connect } from "react-redux"
+//引入api
+import { reqLogin } from '../../api'
+//引入action函数
+import { saveUser } from '../../redux/action-creators'
 
 const Item = Form.Item
 // 装饰器的使用
-// @connect(null, {
-//   saveUser
-// })
+@connect(null, {
+  saveUser
+})
 @Form.create()
 class Login extends Component {
   handleSubmit = e => {
     // 阻止默认事件
     e.preventDefault();
     // 表单验证是否都通过了
-    this.props.form.validateFields((error, values) => {
+    this.props.form.validateFields(async (error, values) => {
       // 错误
       if (!error) {
         // 获取账号和密码
         const { username, password } = values
-        // 发送异步请求
-        axios.post(`http://localhost:3000/api/login`, { username, password })
-          .then(({ data }) => {
-            // 判断发送的请求是否是成功的
-            if (data.status === 0) {
-              // 请求成功,提示信息登录成功
-              console.log(data)
-              message.success('登录成功')
-              // 保存用户信息
-              // this.props.saveUser(data.data)
-
-            } else {
-              // 请求失败了
-              message.error(data.msg)
-            }
-          })
-          .catch((error) => {
-            message.error("请求失败:" + error)
-          })
+        //登录action
+        const result = await reqLogin(username, password)
+        if (!result.status) {
+          message.success('登录成功')
+          this.props.saveUser(result.data)
+        }
+        console.log(result.data)
+        this.props.history.replace('/')
       } else {
-        // 发送异步请求
-        message.error("表单验证失败")
+        // 表单验证失败
+        message.error("账号密码格式不正确")
       }
     })
   }
