@@ -1,55 +1,67 @@
-import React, { Component } from 'react';
-import {  Menu,  Icon } from 'antd';
-import { Link, withRouter } from 'react-router-dom'
-
+import React, {Component} from "react"
+import {Menu, Icon} from "antd"
+import {Link, withRouter} from "react-router-dom"
+import menus from "../../../config/menus.js"
 
 @withRouter
 class LeftNav extends Component {
-
-  goto = () => {
-    console.log(this);
-
-    //  this.props.history.push('/login')
-
+  state = {
+    index: "1"
   }
-  render () {
+
+  creteMenus = () => {
+    return menus.map(menu => (
+      <Menu.Item
+        key={menu.key}
+        className="menuItem"
+        onClick={() => {
+          this.getIndex(menu.key)
+        }}
+      >
+        <Link to={menu.path}>
+          <Icon type={menu.icon} style={{color: "#6C7B95"}} />
+          <span style={{color: "#6C7B95"}}>{menu.title}</span>
+        </Link>
+      </Menu.Item>
+    ))
+  }
+  //点击获取index
+  getIndex = index => {
+    this.setState({
+      index
+    })
+  }
+
+  componentDidMount() {}
+  render() {
+    const menu = this.creteMenus()
+    //找到对应在index，，从而显示那个被点击左侧列表
+    const path = this.props.location.pathname
+
+    const item = menus.filter(item => item.path === path)
+    var index = "1"
+    if(item && item.length >= 1){
+     index = item[0].key 
+    }
+    else{
+     const a =  path.split('/')
+     index = '/'+a[1]
+     const ab = menus.findIndex(item => item.path===index)
+     index=(ab+1).toString()
+    }
+
     return (
-      <div >
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" className='menuList'>
-          <Menu.Item key="1" className='menuItem'>
-            <Link to='/user'>
-              <Icon type="user" style={{ color: '#6C7B95' }} />
-              <span style={{ color: '#6C7B95' }}>用户管理</span>
-            </Link>
-
-          </Menu.Item>
-          <Menu.Item key="2" onClick={this.goto}>
-            <Link to='/article'>
-              <Icon type="container" style={{ color: '#6C7B95' }} />
-              <span style={{ color: '#6C7B95' }}>文章管理</span>
-            </Link>
-
-          </Menu.Item>
-          <Menu.Item key="3">
-            <Link to='/discuss'>
-              <Icon type="message" style={{ color: '#6C7B95' }} />
-              <span style={{ color: '#6C7B95' }}>评论管理</span>
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="4">
-            <Link to='/banner'>
-              <Icon type="file-image" style={{ color: '#6C7B95' }} />
-              <span style={{ color: '#6C7B95' }}>轮播图管理</span>
-            </Link>
-          </Menu.Item>
-          {/* <Menu.Item key="5">
-              <Icon type="smile" style={{color:'#6C7B95'}}/>
-              <span style={{color:'#6C7B95'}}>其他小东西管理</span>
-            </Menu.Item> */}
+      <div>
+        <Menu
+          theme="dark"
+          defaultSelectedKeys={[index]}
+          mode="inline"
+          className="menuList"
+        >
+          {menu}
         </Menu>
       </div>
-    );
+    )
   }
 }
-
-export default LeftNav;
+export default LeftNav

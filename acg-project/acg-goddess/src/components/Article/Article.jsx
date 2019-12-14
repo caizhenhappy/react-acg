@@ -15,7 +15,7 @@ class Article extends Component {
           {
             test.map((te, index) => (
               <Card
-                style={{ width: 500 ,marginBottom:'30px'}}
+                key={index}
                 className='articleItem'
                 cover={
                   <img
@@ -31,20 +31,6 @@ class Article extends Component {
               </Card>
             ))
           }
-          {/* <Card
-          style={{ width: 300 }}
-          cover={
-            <img
-              alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-          }
-        >
-          <div className='btn'>
-          <Button type="primary">Primary</Button>
-          <Button type="primary">Primary</Button>
-          </div>
-        </Card> */}
         </div>
       </div>
 
