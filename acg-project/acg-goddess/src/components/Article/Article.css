@@ -4,25 +4,23 @@
   text-align: center;
 }
 .titleBtn{
+  margin-top: 15px;
   width: 100px;
-  overflow: hidden;
 }
 .articleList{
   width: 100%;
   display: flex;
   flex-wrap:wrap;
-  
   padding-top:30px;
 }
-.articleItem{
-  margin:30px;
-  /* flex-flow:4; */
-  padding-top:30px;
+.ant-card{
+  margin: 23px auto ;
+  width: 40% !important;
+}
+.ant-card-body{
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .btn{
   display: flex;
   justify-content:space-around
-}
-.crudBtn {
-  overflow: hidden;
 }

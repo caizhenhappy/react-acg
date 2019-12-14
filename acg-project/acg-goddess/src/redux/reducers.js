@@ -1,4 +1,4 @@
-import { GET_DATA, ADD_USER, REMOVE_USER, ADD_ART, REMOVE_ART, REMOVE_COM } from './action-types'
+import { GET_DATA, ADD_USER, REMOVE_USER, ADD_ART, REMOVE_ART,  REMOVE_COM , SAVE_USER  } from './action-types'
 
 import { combineReducers } from 'redux'
 //数据的获取
@@ -49,4 +49,31 @@ export default combineReducers({
   user,
   art,
   com
+})
+
+// 登录
+const initUser = {
+  user:getItem('user') || {},
+  token:getItem("token")||{}
+}
+
+function user(prevState=initUser,action){
+  // 判断type
+  switch (action.type) {
+    case SAVE_USER:
+      // 保存用户信息到redux中的同时也要保存到localStorage
+      // prevState.user=action.data.user
+      setItem('user',action.data.user)
+      // 保存token串到redux中的同时也要保存到localStorage
+      setItem('token',action.data.token)
+      //prevState.token=action.data.token
+      return action.data
+  
+    default:
+      return prevState
+  }
+}
+
+export default combineReducers({
+  user
 })

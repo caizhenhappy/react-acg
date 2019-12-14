@@ -1,6 +1,5 @@
 import Mock from 'mockjs'
 import datas from './data'
-import bannerData from './bannerData'
 import qs from 'qs'
 //用户的操作
 /**
@@ -84,6 +83,7 @@ Mock.mock('/removeArt', (options) => {
  */
 // 删除评论
 Mock.mock('/removeCom', (options) => {
+
   let id = qs.parse(options.body)
   const data = JSON.parse(localStorage.getItem('data')) || datas
   data.comment = data.comment.filter(item => item.id !== +id.id)
@@ -92,5 +92,3 @@ Mock.mock('/removeCom', (options) => {
   return data
 })
 
-
-Mock.mock('/getBanner', {code:0,data:bannerData.banner})

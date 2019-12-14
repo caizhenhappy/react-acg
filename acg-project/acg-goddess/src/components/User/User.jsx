@@ -55,14 +55,14 @@ class User extends Component {
       handle: '删除',
     },
     {
-      key: '1',
+      key: '2',
       id: 'John Brown',
       UserName: '￥300,000.00',
       img: 'New York No. 1 Lake Park',
       handle: '删除',
     },
     {
-      key: '1',
+      key: '3',
       id: 'John Brown',
       UserName: '￥300,000.00',
       img: 'New York No. 1 Lake Park',
@@ -139,7 +139,7 @@ class User extends Component {
           width={300}
           onClose={this.onClose}
           visible={this.state.addUserShow}
-           bodyStyle={{ paddingBottom: '150%' }} 
+          bodyStyle={{ paddingBottom: '150%' }}
           className={styles.drawerBg}
         >
           <Form layout="vertical" hideRequiredMark>

@@ -16,3 +16,6 @@ export const REMOVE_ART = 'remove_art'
 //评论操作===============
 //删除评论
 export const REMOVE_COM = 'remove_com'
+
+// 登录的
+export const SAVE_USER = 'save_user'

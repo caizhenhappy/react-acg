@@ -1,4 +1,4 @@
-import { GET_DATA, ADD_USER, REMOVE_USER, ADD_ART, REMOVE_ART, REMOVE_COM } from './action-types'
+import { GET_DATA, ADD_USER, REMOVE_USER, ADD_ART, REMOVE_ART, REMOVE_COM , SAVE_USER } from './action-types'
 //引入请求方法
 import { reqGetDate, reqAddUser, reqRemoveUser, reqAddArt, reqRemoveArt, reqRemoveCom } from '../api/index'
 
@@ -47,9 +47,9 @@ export const removeUser = (id) => {
 //同步ACTION
 const addArtSuccess = (art) => ({ type: ADD_ART, data: art })
 //异步action
-export const addArt = ({ title, author, createTime, mian }) => {
+export const addArt = ({ title, author, createTime, main }) => {
   return async (disptach) => {
-    const result = await reqAddArt({ title, author, createTime, mian })
+    const result = await reqAddArt({ title, author, createTime, main })
     if (result.code === 0) {
       disptach(addArtSuccess(result.article))
     }
@@ -69,7 +69,7 @@ export const removeArt = (id) => {
 
 //评论的操作
 //删除评论
-const removeComSuccess = (comment) => ({ type: REMOVE_ART, data: comment })
+const removeComSuccess = (comment) => ({ type: REMOVE_COM, data: comment })
 //异步action
 export const removeCom = (id) => {
   return async (disptach) => {
@@ -79,5 +79,8 @@ export const removeCom = (id) => {
     }
   }
 }
+
+// 登录的
+export const saveUser = (value) => ({ type:SAVE_USER, data:value })
 
 

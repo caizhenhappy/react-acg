@@ -3,9 +3,8 @@ import React, { Component } from 'react';
 import logo from '../../img/logo.png'
 // 引入样式
 import './BasicLayout.css'
-
+//beijing tyu pian 
 import Background  from './ia_500000004.jpg'
-
 // 引入antd
 import { Layout, Breadcrumb } from 'antd';
 import LeftNav from './LeftNav/LeftNav.jsx';
@@ -17,12 +16,14 @@ class BasictLayout extends Component {
   state = {
     collapsed: false,
   };
+  //背景div
   main = {
     width:'100%',
     height: '100%',
     backgroundImage:`url(${Background})`,
     backgroundSize:'cover',
   };
+
   onCollapse = collapsed => {
     console.log(collapsed);
     this.setState({ collapsed });

@@ -158,7 +158,9 @@ class Admin extends Component {
             帮助
           </TabPane>
           <TabPane tab="收藏" key="3">
-            收藏
+            <section>
+              
+            </section>
           </TabPane>
         </Tabs>
       </div>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Table, Drawer, Button } from "antd";
 import styles from "./banner.module.less";
-import {getBanner} from '../../../src/api/index'
+
 
 
 
@@ -21,13 +21,8 @@ class Banner extends Component {
   //删除
   deleteBanner = () => {};
   //添加图片轮播
-   addBanner= async ()=>{
-     this.onClose()
-   
-  }
-  async componentWillUpdate(){
-    const result = await getBanner()
-    console.log(result)
+  addBanner=()=>{
+    this.onClose()
   }
   //表头
   columns = [ 
@@ -56,7 +51,7 @@ class Banner extends Component {
   data = [
     {
       id: 1,
-      name:"http://img1.imgtn.bdimg.com/it/u=3942027719,2162533398&fm=26&gp=0.jpg",
+      name:"http://img3.imgtn.bdimg.com/it/u=3462392350,62626007&fm=26&gp=0.jpg",
       alt: '来谷唯湖',
       href:
         "New York No. 1users is John Brown",
@@ -65,7 +60,7 @@ class Banner extends Component {
     },
     {
       id: 2,
-      name: "http://img3.imgtn.bdimg.com/it/u=416288537,844461922&fm=26&gp=0.jpg",
+      name: "http://img3.imgtn.bdimg.com/it/u=2391667107,3258741112&fm=26&gp=0.jpg",
       alt: '坂上智代',
       href: "London No. 1 Lake Park",
       doit:
@@ -81,7 +76,7 @@ class Banner extends Component {
     },
     {
       id: 4,
-      name: 'http://img2.imgtn.bdimg.com/it/u=3216641527,1695557561&fm=26&gp=0.jpg',
+      name: 'http://img3.imgtn.bdimg.com/it/u=1155094793,592129984&fm=26&gp=0.jpg',
       alt: '蕾姆',
       href: "Sidney No. 1 Lake Park",
       doit:
