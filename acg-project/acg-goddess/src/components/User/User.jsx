@@ -8,23 +8,24 @@ const { Option } = Select;
 @Form.create()
 class User extends Component {
 
-  state = { visible: false };
-  showDrawer = () => {
+  state = { visible: false ,
+  addUserShow:false};
+  showADD = () => {
     this.setState({
       visible: true,
+    });
+  };
+  showUpdate = () => {
+    this.setState({
+      addUserShow: true,
     });
   };
   onClose = () => {
     this.setState({
       visible: false,
+      addUserShow:false
     });
   };
-
-  handleAdd=()=>{
-    /* console.log(this.props.push('/user/updateUser')); */
-    console.log(this.props.history.push)
-    this.props.history.push('/user/updateUser')
-  }
   columns = [
     {
       title: '用户id',
@@ -77,8 +78,11 @@ class User extends Component {
     return (
       <div>
         <header>
-        <Button onClick={this.handleAdd} type="primary" style={{ marginBottom: 16 ,width:'100px'}} size='large'>
+        <Button  onClick={this.showADD} type="primary" style={{ margin: 16 ,width:'100px'}} size='large'>
           添加用户
+        </Button>
+        <Button  onClick={this.showUpdate} type="primary" style={{ margin: 16 ,width:'100px'}} size='large'>
+          修改用户
         </Button>
         </header>
         <Table
@@ -86,107 +90,34 @@ class User extends Component {
           dataSource={data}
         />
         <div>
-        <Button type="primary" onClick={this.showDrawer}>
-          <Icon type="plus" /> 新的按钮
-        </Button>
         <Drawer
-          title="Create a new account"
-          width={720}
+          title="添加用户"
+          width={300}
           onClose={this.onClose}
           visible={this.state.visible}
           bodyStyle={{ paddingBottom: 80 }}
         >
           <Form layout="vertical" hideRequiredMark>
-            <Row gutter={16}>
-              <Col span={12}>
-                <Form.Item label="Name">
+            <Row gutter={18}>
+              <Col span={18}>
+                <Form.Item label="用户名">
                   {getFieldDecorator('name', {
-                    rules: [{ required: true, message: 'Please enter user name' }],
-                  })(<Input placeholder="Please enter user name" />)}
-                </Form.Item>
-              </Col>
-              <Col span={12}>
-                <Form.Item label="Url">
-                  {getFieldDecorator('url', {
-                    rules: [{ required: true, message: 'Please enter url' }],
-                  })(
-                    <Input
-                      style={{ width: '100%' }}
-                      addonBefore="http://"
-                      addonAfter=".com"
-                      placeholder="Please enter url"
-                    />,
-                  )}
+                    rules: [{ required: true, message: '请输入用户名' }],
+                  })(<Input placeholder="请输入用户名" />)}
                 </Form.Item>
               </Col>
             </Row>
-            <Row gutter={16}>
-              <Col span={12}>
-                <Form.Item label="Owner">
-                  {getFieldDecorator('owner', {
-                    rules: [{ required: true, message: 'Please select an owner' }],
-                  })(
-                    <Select placeholder="Please select an owner">
-                      <Option value="xiao">Xiaoxiao Fu</Option>
-                      <Option value="mao">Maomao Zhou</Option>
-                    </Select>,
-                  )}
-                </Form.Item>
-              </Col>
-              <Col span={12}>
-                <Form.Item label="Type">
-                  {getFieldDecorator('type', {
-                    rules: [{ required: true, message: 'Please choose the type' }],
-                  })(
-                    <Select placeholder="Please choose the type">
-                      <Option value="private">Private</Option>
-                      <Option value="public">Public</Option>
-                    </Select>,
-                  )}
+            <Row gutter={18}>
+              <Col span={18}>
+              <Form.Item label="密码">
+                  {getFieldDecorator('password', {
+                    rules: [{ required: true, message: '请输入密码' }],
+                  })(<Input placeholder="请输入密码" />)}
                 </Form.Item>
               </Col>
             </Row>
-            <Row gutter={16}>
-              <Col span={12}>
-                <Form.Item label="Approver">
-                  {getFieldDecorator('approver', {
-                    rules: [{ required: true, message: 'Please choose the approver' }],
-                  })(
-                    <Select placeholder="Please choose the approver">
-                      <Option value="jack">Jack Ma</Option>
-                      <Option value="tom">Tom Liu</Option>
-                    </Select>,
-                  )}
-                </Form.Item>
-              </Col>
-              <Col span={12}>
-                <Form.Item label="DateTime">
-                  {getFieldDecorator('dateTime', {
-                    rules: [{ required: true, message: 'Please choose the dateTime' }],
-                  })(
-                    <DatePicker.RangePicker
-                      style={{ width: '100%' }}
-                      getPopupContainer={trigger => trigger.parentNode}
-                    />,
-                  )}
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row gutter={16}>
-              <Col span={24}>
-                <Form.Item label="Description">
-                  {getFieldDecorator('description', {
-                    rules: [
-                      {
-                        required: true,
-                        message: 'please enter url description',
-                      },
-                    ],
-                  })(<Input.TextArea rows={4} placeholder="please enter url description" />)}
-                </Form.Item>
-              </Col>
-            </Row>
-          </Form>
+         </Form>
+          <Button type="primary" style={{width:190}} >确认添加</Button>
           <div
             style={{
               position: 'absolute',
@@ -199,14 +130,51 @@ class User extends Component {
               textAlign: 'right',
             }}
           >
-            <Button onClick={this.onClose} style={{ marginRight: 8 }}>
-              Cancel
-            </Button>
-            <Button onClick={this.onClose} type="primary">
-              Submit
-            </Button>
           </div>
         </Drawer>
+        <Drawer
+          title="修改用户"
+          width={300}
+          onClose={this.onClose}
+          visible={this.state.addUserShow}
+          bodyStyle={{ paddingBottom: 80 }}
+        >
+          <Form layout="vertical" hideRequiredMark>
+            <Row gutter={18}>
+              <Col span={18}>
+                <Form.Item label="用户名">
+                  {getFieldDecorator('name', {
+                    rules: [{ required: true, message: '请输入用户名' }],
+                  })(<Input placeholder="请输入用户名" />)}
+                </Form.Item>
+              </Col>
+            </Row>
+            <Row gutter={18}>
+              <Col span={18}>
+              <Form.Item label="密码">
+                  {getFieldDecorator('password', {
+                    rules: [{ required: true, message: '请输入密码' }],
+                  })(<Input placeholder="请输入密码" />)}
+                </Form.Item>
+              </Col>
+            </Row>
+         </Form>
+          <Button type="primary" style={{width:190}} >确认修改</Button>
+          <div
+            style={{
+              position: 'absolute',
+              right: 0,
+              bottom: 0,
+              width: '100%',
+              borderTop: '1px solid #e9e9e9',
+              padding: '10px 16px',
+              background: '#fff',
+              textAlign: 'right',
+            }}
+          >
+          </div>
+        </Drawer>
+      
       </div>
       </div>
     );
