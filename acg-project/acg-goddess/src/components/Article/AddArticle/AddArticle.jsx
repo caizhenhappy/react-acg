@@ -25,7 +25,7 @@ class Article extends Component {
         <Input placeholder="尼酱" />
         <h2>时间类似:2019/12/13)</h2>
         <Input placeholder="2019/12/13" />
-        <Button type="primary" className='btn'>确认提交</Button>
+        <Button type="primary" className='btn' style={{overflow: 'hidden'}}>确认提交</Button>
       </div>
     );
   }

@@ -4,6 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
+src12.14
+src12.14-1
+src12.14-2
+src12.14-3
 
 # testing
 /coverage

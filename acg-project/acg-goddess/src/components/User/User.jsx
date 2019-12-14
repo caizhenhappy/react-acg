@@ -1,25 +1,12 @@
 import React, { Component } from 'react';
 
-import {connect} from 'react-redux'
-import {addUser,getData} from '../../redux/action-creators'
 
 import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker, Icon ,Table} from 'antd';
-
+import styles from './User.module.less'
 const { Option } = Select;
 
-@connect((state)=>(
-  {data:state.data.data}
-),{addUser,getData})
 @Form.create()
 class User extends Component {
-
-
-
-  componentDidMount(){
-     this.props.getData()
-  
-    
-  }
 
   state = { visible: false ,
   addUserShow:false};
@@ -43,77 +30,50 @@ class User extends Component {
     {
       title: '用户id',
       dataIndex: 'id',
- 
     },
     {
       title: '用户名',
       className: 'UserName',
-      dataIndex: 'userName',
-    
+      dataIndex: 'UserName',
     },
     {
       title: '用户头像',
-      dataIndex: 'userImg',
-
+      dataIndex: 'img',
     },
     {
       title: '操作',
-      dataIndex: 'isAdmin',
-  
+      dataIndex: 'handle',
     }
   ];
 
-  
-
-
-  // data = [
-  //   {
-  //     key: "1",
-  //     id: 'John Brown',
-  //     UserName: '￥300,000.00',
-  //     img: 'New York No. 1 Lake Park',
-  //     handle: '删除',
-  //   },
-  //   {
-  //     key: '2',
-  //     id: 'John Brown',
-  //     UserName: '￥300,000.00',
-  //     img: 'New York No. 1 Lake Park',
-  //     handle: '删除',
-  //   },
-  //   {
-  //     key: '3',
-  //     id: 'John Brown',
-  //     UserName: '￥300,000.00',
-  //     img: 'New York No. 1 Lake Park',
-  //     handle: '删除',
-  //   },
-  // ];
-
-  addUser=()=>{
-    this.props.form.validateFields((err,val)=>{
-     if(!err){
-       const {name ,password} =val
-        const userName = name 
-        const isAdmin = true
-        this.props.addUser({userName,isAdmin,password}) 
-      // addUser = ({ userName, isAdmin, password }) 
-     }
-    })
+  data = [
+    {
+      key: '1',
+      id: 'John Brown',
+      UserName: '￥300,000.00',
+      img: 'New York No. 1 Lake Park',
+      handle: '删除',
+    },
+    {
+      key: '2',
+      id: 'John Brown',
+      UserName: '￥300,000.00',
+      img: 'New York No. 1 Lake Park',
+      handle: '删除',
+    },
+    {
+      key: '3',
+      id: 'John Brown',
+      UserName: '￥300,000.00',
+      img: 'New York No. 1 Lake Park',
+      handle: '删除',
+    },
     
-  }
+  ];
 
   render () {
-    const { columns,data } = this
+    const { columns, data } = this
     const { getFieldDecorator } = this.props.form;
-
-    if(this.props.data){
-      this.user = this.props.data.user
-      console.log(this.user);
-      
-    }
-
-
 
     return (
       <div>
@@ -127,7 +87,8 @@ class User extends Component {
         </header>
         <Table
           columns={columns}
-          dataSource={this.user}
+          dataSource={data}
+          className={styles.modelTable}
         />
         <div>
         <Drawer
@@ -135,7 +96,8 @@ class User extends Component {
           width={300}
           onClose={this.onClose}
           visible={this.state.visible}
-          bodyStyle={{ paddingBottom: 80 }}
+          bodyStyle={{ paddingBottom: '150%' }}
+          className={styles.drawerBg}
         >
           <Form layout="vertical" hideRequiredMark>
             <Row gutter={18}>
@@ -157,7 +119,7 @@ class User extends Component {
               </Col>
             </Row>
          </Form>
-          <Button type="primary" style={{width:190}} onClick={()=>{this.addUser()}}>确认添加</Button>
+          <Button type="primary" style={{width:190}} >确认添加</Button>
           <div
             style={{
               position: 'absolute',
@@ -166,7 +128,7 @@ class User extends Component {
               width: '100%',
               borderTop: '1px solid #e9e9e9',
               padding: '10px 16px',
-              background: '#fff',
+              background: '#FFFDF9',
               textAlign: 'right',
             }}
           >
@@ -177,7 +139,8 @@ class User extends Component {
           width={300}
           onClose={this.onClose}
           visible={this.state.addUserShow}
-          bodyStyle={{ paddingBottom: 80 }}
+          bodyStyle={{ paddingBottom: '150%' }}
+          className={styles.drawerBg}
         >
           <Form layout="vertical" hideRequiredMark>
             <Row gutter={18}>
@@ -208,7 +171,7 @@ class User extends Component {
               width: '100%',
               borderTop: '1px solid #e9e9e9',
               padding: '10px 16px',
-              background: '#fff',
+              background: '#FFFDF9',
               textAlign: 'right',
             }}
           >

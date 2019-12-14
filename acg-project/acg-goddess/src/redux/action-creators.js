@@ -24,8 +24,6 @@ const addUserSuccess = (users) => ({ type: ADD_USER, data: users })
 //异步action
 export const addUser = ({ userName, isAdmin, password }) => {
   return async (disptach) => {
-
-    
     const result = await reqAddUser({ userName, isAdmin, password })
     if (result.code === 0) {
       disptach(addUserSuccess(result.user))

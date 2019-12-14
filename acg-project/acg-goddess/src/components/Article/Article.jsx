@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button } from 'antd';
+import { Card, Button,PageHeader  } from 'antd';
 // 引入样式
 import './Article.css'
 
@@ -16,9 +16,11 @@ class Article extends Component {
         <div className='articleList'>
           {
             test.map((te, index) => (
+              
               <Card
                 key={index}
                 className='articleItem'
+                
                 cover={
                   <img
                     alt="example"
@@ -27,8 +29,8 @@ class Article extends Component {
                 }
               >
                 <div className='btn'>
-                  <Button type="primary">修改</Button>
-                  <Button type="primary">删除</Button>
+                  <button style={{backgroundColor:'#D3F4FF',border: 'none',borderRadius: '10px',width:'25%',minHeight:'30px'}} >修改</button>
+                  <button style={{backgroundColor:'#D3F4FF',border: 'none',borderRadius: '10px',width:'25%',minHeight:'30px'}} >删除</button>
                 </div>
               </Card>
             ))
