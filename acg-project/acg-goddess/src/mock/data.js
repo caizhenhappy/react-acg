@@ -5,8 +5,7 @@ export default {
       id: 0,
       userName: 'jio',
       isAdmin: true,
-      passWored: 123456,
-      userImg: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1576138355161&di=301faa1d0521b47729f94bbf2b3429de&imgtype=0&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fwh%253D450%252C600%2Fsign%3Da324d475948fa0ec7f926c0913a775d8%2F0eb30f2442a7d9330961f235a84bd11372f001ae.jpg"
+      passWored: 123456
     }
   ],
   article: [
