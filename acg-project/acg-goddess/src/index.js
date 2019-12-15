@@ -4,10 +4,18 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 // 引入App 组件
 import App from './App.jsx'
+// 引入mock 
+import './mock/mock-server'
+import { Provider } from 'react-redux'
+import store from './redux/store'
 
 // 引入样式重置的文件
 import './assets/css/reset.css'
 // 渲染组件
-ReactDOM.render(<App/>,document.getElementById('root'))
+ReactDOM.render((
+  <Provider store={store}>
+    <App />
+  </Provider>
+),document.getElementById('root'))
 
 

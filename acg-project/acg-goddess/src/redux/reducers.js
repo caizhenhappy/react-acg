@@ -41,23 +41,13 @@ function com(prevState = [], action) {
       return prevState
   }
 }
-//获取数据的时候最好用data  ，，不对数据进行修改的时候redux中的user,art,com为空
-//mock没写对应的的单个数据的获取方法，数据在data中
-//当你对user,art，com 就可以获取在redux中单独的获取了
-export default combineReducers({
-  data,
-  user,
-  art,
-  com
-})
-
 // 登录
-const initUser = {
+/* const initUser = {
   user:getItem('user') || {},
   token:getItem("token")||{}
 }
 
-function user(prevState=initUser,action){
+function users(prevState=initUser,action){
   // 判断type
   switch (action.type) {
     case SAVE_USER:
@@ -72,8 +62,21 @@ function user(prevState=initUser,action){
     default:
       return prevState
   }
-}
+} */
 
+
+
+//获取数据的时候最好用data  ，，不对数据进行修改的时候redux中的user,art,com为空
+//mock没写对应的的单个数据的获取方法，数据在data中
+//当你对user,art，com 就可以获取在redux中单独的获取了
 export default combineReducers({
-  user
+  data,
+  user,
+  art,
+  com,
+  // user
 })
+
+
+
+

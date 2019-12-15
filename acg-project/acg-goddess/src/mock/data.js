@@ -31,29 +31,28 @@ export default {
       commentUser: "天线宝宝",
       commentTime: '2011 4 5',
       commentMain: "啊哈哈哈哈",
-      commentArtId: 0
+      commentArtId: '泉 千春'
     },
     {
       id: 1,
       commentUser: "海绵宝宝",
       commentTime: '2011 4 1',
       commentMain: "派大星你好呀",
-      commentArtId: 1
+      commentArtId: '泉 千春'
     },
     {
       id: 2,
       commentUser: "机器猫",
       commentTime: '2011 4 1',
       commentMain: "奥利给",
-      commentArtId: 1
+      commentArtId: '若林 奈央'
     },
     {
       id: 3,
       commentUser: "派大星",
       commentTime: '2011 4 5',
       commentMain: "买什么小米",
-      commentArtId: 0
+      commentArtId: '若林 奈央'
     }
-
   ]
 }
