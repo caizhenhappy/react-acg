@@ -8,12 +8,18 @@ import logo from "../../assets/images/ia_500000005.jpg"
 import  headPortrait from "../../assets/images/upload_4a5e298a6c72cad8586a07eea65a5bba.jpeg"
 // 引入样式文件
 import './admin.css'
+/* canvas-particle 粒子 */
+import {CanvasParticle} from './canvas-particle.js'
 
 const { TabPane } = Tabs;
 class Admin extends Component {
+  
+componentDidMount(){
+  CanvasParticle()
+}
   render() {
     return (
-      <div className="admin">
+      <div className="admin" id='mydiv'>
         <div className="admin-header">
           <img src={logo} alt={logo}/>
           <span>天使的二次元</span>        

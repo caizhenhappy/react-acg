@@ -1,5 +1,6 @@
 import Mock from 'mockjs'
 import datas from './data'
+import bannerData from './bannerData.json'
 import qs from 'qs'
 //用户的操作
 /**
@@ -92,3 +93,7 @@ Mock.mock('/removeCom', (options) => {
   return data
 })
 
+//获取已有banner
+Mock.mock('/getBanner',bannerData.banner)
+//添加列表里的bannder
+Mock.mock('/addBanner',bannerData.addBanner)   

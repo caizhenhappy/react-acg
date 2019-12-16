@@ -269,3 +269,18 @@ function loadOtherModel(){
         }
     });
 }
+//拖拽
+(function setDraggable() {
+  $(".waifu").on("mousedown", function(e1) {
+    $(".waifu").css("transition", "none");
+    $(document).on("mousemove", function mousemove(e) {
+      let left = e.clientX - 140 + "px";
+      let top = e.clientY - 125 + "px";
+      $(".waifu").css({ top: top, left: left});
+    });
+  });
+  $(".waifu").on("mouseup", function() {
+    $(document).unbind("mousemove");
+    $(".waifu").css("transition", "all .3s ease-in-out");
+  });
+})()

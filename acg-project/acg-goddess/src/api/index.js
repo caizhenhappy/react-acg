@@ -67,3 +67,7 @@ export const reqRemoveCom = (id) => ajax({
     id
   }
 })
+
+//Banner
+export const getBanner =()=>ajax('/getBanner')
+export const addBanner =()=>ajax('/addBanner')

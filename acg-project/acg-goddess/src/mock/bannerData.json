@@ -1,0 +1,62 @@
+{
+  "banner": [
+    {
+      "id": 1,
+      "bannerImg": "/aoligei.jpg",
+      "alt": "奥利给"
+    },
+    {
+      "id": 2,
+      "bannerImg": "/banner2.jpg",
+      "alt": "哥布林杀手"
+    },
+    {
+      "id": 3,
+      "bannerImg": "/banner6.jpg",
+      "alt": "弹丸论破"
+    }
+  ],
+  "addBanner":[
+    {
+      "id": 4,
+      "bannerImg": "/banner1.jpg",
+      "alt": "banner1.jpg"
+    },
+    {
+      "id": 5,
+      "bannerImg": "/banner3.jpg",
+      "alt": "banner3.jpg"
+    },
+    {
+      "id": 6,
+      "bannerImg": "/banner4.jpg",
+      "alt": "banner3.jpg"
+    },
+    {
+      "id": 7,
+      "bannerImg": "/banner5.jpg",
+      "alt": "banner5.jpg"
+    },
+    {
+      "id": 8,
+      "bannerImg": "/banner7.jpg",
+      "alt": "banner7.jpg"
+    },
+    {
+      "id": 9,
+      "bannerImg": "/banner8.jpg",
+      "alt": "banner8.jpg"
+    },
+    {
+      "id": 10,
+      "bannerImg": "/banner9.jpg",
+      "alt": "banner9.jpg"
+    },
+    {
+      "id": 11,
+      "bannerImg": "/banner10.jpg",
+      "alt": "banner10.jpg"
+    }
+
+  ]
+}

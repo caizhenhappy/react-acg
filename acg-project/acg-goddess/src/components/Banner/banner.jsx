@@ -1,95 +1,93 @@
 import React, { Component } from "react";
 import { Table, Drawer, Button } from "antd";
 import styles from "./banner.module.less";
+import {getBanner,addBanner} from '../../api/index'
 
 
 
-
+//缓存做的lowB增删
 class Banner extends Component {
   //抽屉 添加图片轮播
-  state = { visible: false, id: "" };
+  state = { visible: false, id: "" ,banner:[],add_banner:[]};
   showDrawer = () => {
     this.setState({
       visible: true
     });
   };
-  onClose = () => {
+   onClose = () => {
     this.setState({
       visible: false
     });
-  };
+  }; 
   //删除
-  deleteBanner = () => {};
+  deleteBanner = (index) => {
+    const nowBanner = this.state.banner
+    const thenBanner = nowBanner.splice(index,1)
+   
+    this.setState({
+      banner:nowBanner
+    })
+    window.localStorage.setItem('banner',JSON.stringify(nowBanner))
+    window.localStorage.setItem('chooseBanner',JSON.stringify(this.state.add_banner))
+  };
   //添加图片轮播
-  addBanner=()=>{
-    this.onClose()
+  btnBanner=(id)=>{
+    //获取选中的BANNER索引
+ const i = this.state.add_banner.findIndex((item)=>item.id===this.state.id)
+ //截出来
+ const chooseBanner = this.state.add_banner.splice(i,1)
+//获取现在使用的BANNER数组
+  const nowBanner = this.state.banner
+  //添加到其中
+  nowBanner.unshift(chooseBanner[0])
+  this.setState({
+    banner:nowBanner
+  })  
+  window.localStorage.setItem('banner',JSON.stringify(nowBanner))
+  window.localStorage.setItem('chooseBanner',JSON.stringify(this.state.add_banner))
+  }
+  
+  //获取banner  感觉写的好low啊
+   async componentDidMount(){
+    const result = await getBanner()
+    const result2 = await addBanner()
+    const result3 = JSON.parse(window.localStorage.getItem('banner'))
+    const result4 = JSON.parse(window.localStorage.getItem('chooseBanner')) 
+    if(!result3){
+      this.setState({
+        banner: result,
+        add_banner:result2
+      }) 
+    }else{
+      this.setState({
+        banner: result3,
+        add_banner:result4
+      }) 
+    }
   }
   //表头
   columns = [ 
-    { title: "轮播图Id", dataIndex: "id", key: "id" },                                                    
-    { title: "图片", width: 320,dataIndex: "name", key: "name" ,render:text=>( <img style={{width:'170px',height:'90px'}} src={`${text}`} /> )
+    { title: "轮播图Id",width:250, dataIndex: "id", key: "id" },                                                    
+    { title: "图片",width:400,dataIndex: "bannerImg", key: "name" ,render:text=>( <img style={{width:'220px',height:'120px'}} src={require(`../../assets/images/bannner${text}`)} /> )
     },
-    { title: "图片注释", dataIndex: "alt", key: "alt" },
-    { title: "图片跳转", dataIndex: "href", key: "href" },
+    { title: "图片注释", width:400,dataIndex: "alt", key: "alt" },
+   /*  { title: "图片跳转", dataIndex: "href", key: "href" }, */
     {
       title: "操作",
       dataIndex: "doit",
       key: "doit",
-      render: text => (
+      render:  (text, record, index)  => 
         <a
           onClick={() => {
-            //e.preventDefault()
-            console.log(text)
+            this.deleteBanner(index)
           }}
         >
           删除
         </a>
-      )
+      
     }
   ];
-  //列表数据
-  data = [
-    {
-      id: 1,
-      name:"http://img3.imgtn.bdimg.com/it/u=3462392350,62626007&fm=26&gp=0.jpg",
-      alt: '来谷唯湖',
-      href:
-        "New York No. 1users is John Brown",
-        doit:
-        "My name is Jim Green, I am 42 years old, living in London No. 1 Lake Park."
-    },
-    {
-      id: 2,
-      name: "http://img3.imgtn.bdimg.com/it/u=2391667107,3258741112&fm=26&gp=0.jpg",
-      alt: '坂上智代',
-      href: "London No. 1 Lake Park",
-      doit:
-        "My name is Jim Green, I am 42 years old, living in London No. 1 Lake Park."
-    },
-    {
-      id: 3,
-      name: 'https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3635199020,294529816&fm=26&gp=0.jpg',
-      alt: '萩原夏树',
-      href: "Sidney No. 1 Lake Park",
-      doit:
-        "My name is Joe Black, I am 32 years old, living in Sidney No. 1 Lake Park."
-    },
-    {
-      id: 4,
-      name: 'http://img3.imgtn.bdimg.com/it/u=1155094793,592129984&fm=26&gp=0.jpg',
-      alt: '蕾姆',
-      href: "Sidney No. 1 Lake Park",
-      doit:
-        "My name is Joe Black, I am 32 years old, living in Sidney No. 1 Lake Park."
-    },  
-
-  ];
-  bannerData = [
-    { id: 1, name: "https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1701012814,685719540&fm=26&gp=0.jpg" },
-    { id: 2, name: "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1204302793,1252338636&fm=26&gp=0.jpg" },
-    { id: 3, name: "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1738466288,2927867121&fm=26&gp=0.jpg" },
-    { id: 4, name: "https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1867036698,254364248&fm=26&gp=0.jpg" }
-  ];
+ 
   render() {
     return (
       <div>
@@ -107,7 +105,8 @@ class Banner extends Component {
           visible={this.state.visible}
           className={styles.drawerBg}
         >
-          {this.bannerData.map(item => {
+          {
+          this.state.add_banner.map(item => {
             return (
               <img
                 key={item.id}
@@ -135,15 +134,13 @@ class Banner extends Component {
                       id: item.id
                   })
               }}
-              src={`${item.name}`}
+              src={require(`../../assets/images/bannner${item.bannerImg}`)}
               />
-                
-              
             );
-          })}
-
+          })
+          }
           <div style={{ textAlign: "center" }}>
-            <Button type="primary" onClick={this.addBanner} style={{padding:'0 15px'}}>
+            <Button type="primary" onClick={this.btnBanner} style={{padding:'0 15px'}}>
               添加
             </Button>
           </div>
@@ -152,8 +149,8 @@ class Banner extends Component {
         <Table
           rowKey={record => record.id}
           columns={this.columns}
-          dataSource={this.data}
-          pagination={{pageSize:5}}
+          dataSource={this.state.banner}
+          pagination={{pageSize:3}}
           className={styles.modelTable}
         />
       </div>

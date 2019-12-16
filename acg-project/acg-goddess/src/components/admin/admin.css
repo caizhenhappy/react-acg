@@ -6,6 +6,12 @@
   background-repeat: no-repeat;
   overflow: auto;
 }
+#mydiv,canvas{
+  position:absolute;
+  left:0px;
+  top:0px;
+  z-index:50;
+}  
 /* 头部样式 */
 .admin-header{
   width: 100%;

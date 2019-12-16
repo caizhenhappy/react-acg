@@ -11,6 +11,8 @@ import { NavLink } from 'react-router-dom'
 // import { connect } from "react-redux"
 // // 引入action
 // import { saveUser } from '../../redux/action-creators.js'
+//背景粒子特效
+import {CanvasParticle} from '../admin/./canvas-particle'
 
 const Item = Form.Item
 // 装饰器的使用
@@ -72,10 +74,13 @@ class Login extends Component {
     //console.log(value)
     // callback()
   }
+  componentDidMount(){
+    CanvasParticle()
+  }
   render () {
     const { getFieldDecorator } = this.props.form
     return (
-      <div className="login">
+      <div className="login" id='mydiv'>
         <div className="login_container">
           <h2 >用户登录</h2>
           <Form onSubmit={this.handleSubmit} className="login-form">
