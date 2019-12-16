@@ -7,12 +7,10 @@ import styles from './Discuss.module.less'
 import { removeCom, getData } from '../../redux/action-creators'
 import { connect } from 'react-redux';
 
-
-
-@connect((state)=>({data:state.data.data}),{removeCom,getData})
+@connect((state) => ({ data: state.data.data }), { removeCom, getData })
 
 class Discuss extends Component {
-  componentDidMount(){
+  componentDidMount () {
     // 为了获取评论信息，可能需要发送请求
     this.props.getData()
   }
@@ -40,45 +38,86 @@ class Discuss extends Component {
       title: '发送时间',
       dataIndex: 'commentTime',
     },
-    /* {
+    {
       title: '操作',
-      dataIndex: 'handle',
+
       render: (comment) => {
-        return <Button type="link" onClick={()=>{this.delDiscuss(comment.id)}}>
-        删除
+        return <Button type="link" onClick={() => {
+          this.delDiscuss(comment.id)
+         /*  console.log(comment); */
+        }}>
+          删除
       </Button>
       },
-    }, */
+    },
   ];
 
- /*  // 删除用户
-  delDiscuss=(id)=>{
-    Modal.confirm({
-      title: '确认删除吗',
-      okText: '确认',
-      cancelText: '取消',
-      // 箭头函数
-      onOk: () => {
-        this.props.removeCom(id)
-      }
-    })
+  // 删除用户
+/*     delDiscuss=(id)=>{
+      Modal.confirm({
+        title: '确认删除吗',
+        okText: '确认',
+        cancelText: '取消',
+        // 箭头函数
+        onOk: () => {
+          this.props.removeCom(id)
+          this.props.getData()
+        }
+      })
+    } */
+
+    delDiscuss=(id)=>{
+      Modal.confirm({
+        title: '确认删除吗',
+        okText: '确认',
+        cancelText: '取消',
+        okButtonProps: {
+          style:{
+            backgroundColor:'#D3F4FF',
+          width:'90px'}
+       },
+        cancelButtonProps:{
+          style:{
+          width:'90px'}
+       },
+        // 箭头函数
+        onOk: () => {
+          this.props.removeCom(id)
+          this.props.getData()
+        }
+      })
+    }
+/*   delDiscuss = (id) => {
+    <Modal
+    visible={visible}
+    title="Title"
+    onOk={this.handleOk}
+    onCancel={this.handleCancel}
+    footer={[
+      <Button key="back" onClick={this.handleCancel}>
+        Return
+      </Button>,
+      <Button key="submit" type="primary" loading={loading} onClick={this.handleOk}>
+        Submit
+      </Button>,
+    ]}
+  />
   } */
 
+  // 点击取消
   render () {
     const { columns } = this
-    if(this.props.data){
+    if (this.props.data) {
       this.comment = this.props.data.comment
     }
-    const {comment} = this
-    console.log(comment);
-    
+    const { comment } = this
+
     return (
       <div>
         <Table
           columns={columns}
           dataSource={comment}
           className={styles.modelTable}
-          
         />
       </div>
     );
