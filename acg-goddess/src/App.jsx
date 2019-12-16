@@ -20,12 +20,13 @@ class App extends Component {
           <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={Register} />
           <BasicLayout>
-            <Switch>
+            {/* <Switch> */}
               {
-                routes.map((route,index)=>(<Route key={index}{...route}/>))
+                routes.map((route, index) => (<Route key={index}{...route} />))
               }
-            </Switch>
+            {/* </Switch> */}
           </BasicLayout>
+
         </Switch>
       </Router>
     );

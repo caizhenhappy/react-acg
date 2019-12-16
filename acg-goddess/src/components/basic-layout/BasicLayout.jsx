@@ -10,7 +10,7 @@ import LeftNav from './LeftNav/LeftNav.jsx';
 const { Header, Content, Footer, Sider } = Layout;
 
 
-// @CheckoutAdmine
+@CheckoutAdmin
 class BasictLayout extends Component {
   state = {
     collapsed: false,

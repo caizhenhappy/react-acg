@@ -19,7 +19,7 @@ class Admin extends Component {
     //注销功能
   }
   render () {
-    console.log(this.props.isAdmin)
+    console.log('1111',this.props.isAdmin)
     return (
       <div className="admin">
         <div className="admin-header">
@@ -142,7 +142,7 @@ class Admin extends Component {
                   <p>admin</p>
                   <Button type="link" ghost onClick={this.getLogout}> 注销</Button>
                   {
-                    this.props.isAdmin?<Button type="link" ghost onClick={this.props.history.replace('/home')}> 管理</Button>:<div/>
+                    this.props.isAdmin?<Button type="link" ghost onClick={()=>{this.props.history.replace('/home')}}> 管理</Button>:<div/>
                   }
                   
                 </Card>
