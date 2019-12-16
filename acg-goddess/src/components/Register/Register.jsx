@@ -35,7 +35,7 @@ class Register extends Component {
         // 获取账号和密码
         const { username, password } = values
         const { imgUrl } = this.state
-        if (!imgUrl) {
+        if (!imgUrl&&imgUrl!==null) {
           message.error('图片未上传完毕')
           return
         }
@@ -75,6 +75,7 @@ class Register extends Component {
     }
   }
   render () {
+    console.log(this)
     if(this.props.token) {
       this.props.history.replace('/')
       return <div/>

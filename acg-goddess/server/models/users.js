@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
   password: {type: String, required: true}, // 密码
   createTime: {type: Number, default: Date.now},
   isAdmin: {type: Boolean, default: true},
-  imgUrl:{type: String, default: './images/avatar.jpg'}
+  imgUrl:String
 });
 
 // 3. 定义Model(与集合对应, 可以操作集合)
