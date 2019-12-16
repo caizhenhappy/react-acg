@@ -11,14 +11,14 @@ router.post('/api/user/add', async (req, res) => {
   const { username, password,imgUrl } = req.body;
   // 处理: 判断用户是否已经存在, 如果存在, 返回提示错误的信息, 如果不存在, 保存
   // 查询(根据username)
+  console.log(req.body)
   try {
     let user = await Users.findOne({ username });
-    console.log(user)
     if (user) {
       res.json({ status: 1, msg: '此用户已存在' });
       return;
     }
-    user = await Users.create({ ...req.body, password: md5(password),imgUrl });
+    user = await Users.create({ ...req.body, password: md5(password),imgUrl,isAdmin:false });
     res.json({
       status: 0,
       data: "注册成功"

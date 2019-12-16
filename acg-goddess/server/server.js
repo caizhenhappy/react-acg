@@ -37,7 +37,7 @@ app.listen(SERVER_CONFIG.port, (err) => {
 Users.findOne({username: 'admin'}).then(async (user) => {
   if(!user) {
     try {
-      const user = await Users.create({username: 'admin', password: md5('admin'), isAdmin: true,imgUrl:'./images/avatar.jpg' });
+      const user = await Users.create({username: 'admin', password: md5('admin'), isAdmin:true });   //这里isAdmin无法设置上
       console.log(user,`创建初始管理员用户成功~  用户名: admin 密码: admin`);
     } catch (e) {
       console.log('创建初始管理员用户失败~', e);

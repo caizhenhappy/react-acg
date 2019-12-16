@@ -4,13 +4,15 @@ import './Register.less'
 // 引入antd
 import { Form, Icon, Input, Button, message } from "antd"
 //引入路由
-import { NavLink } from 'react-router-dom'
+import { NavLink,withRouter } from 'react-router-dom'
 // 引入api接口
 import { reRegister } from '../../api/index'
+import { connect } from 'react-redux'
 import Avatar from './Avatar'
 
 const Item = Form.Item
 @Form.create()
+@connect(state=>({token:state.users.token}))
 class Register extends Component {
   state = {
     imgUrl: null
@@ -54,7 +56,6 @@ class Register extends Component {
         message.error("表单验证失败")
       }
     })
-    console.log('僵硬')
   }
   // 做表单的验证
   validator = (rule, value, callback) => {
@@ -72,10 +73,12 @@ class Register extends Component {
     } else {
       callback()
     }
-    //console.log(value)
-    // callback()
   }
   render () {
+    if(this.props.token) {
+      this.props.history.replace('/')
+      return <div/>
+    }
     const { getFieldDecorator } = this.props.form
     return (
       <div className="register">

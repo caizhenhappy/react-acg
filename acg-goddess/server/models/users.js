@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   username: {type: String, required: true}, // 用户名
   password: {type: String, required: true}, // 密码
   createTime: {type: Number, default: Date.now},
-  isAdmin: {type: Boolean, default: false},
+  isAdmin: {type: Boolean, default: true},
   imgUrl:{type: String, default: './images/avatar.jpg'}
 });
 

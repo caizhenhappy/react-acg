@@ -4,16 +4,18 @@ import "./Login.less"
 // 引入antd
 import { Form, Icon, Input, Button, message } from "antd"
 //引入路由
-import { NavLink } from 'react-router-dom'
+import { NavLink,withRouter } from 'react-router-dom'
 // 引入connect
 import { connect } from "react-redux"
 //引入api
 import { reqLogin } from '../../api'
 //引入action函数
 import { saveUser } from '../../redux/action-creators'
+import CheckoutLogin from '../Checkout/CheckoutLogin'
 
 const Item = Form.Item
 // 装饰器的使用
+@CheckoutLogin
 @connect(null, {
   saveUser
 })
@@ -32,10 +34,11 @@ class Login extends Component {
         const result = await reqLogin(username, password)
         if (!result.status) {
           message.success('登录成功')
+          console.log(this)
           this.props.saveUser(result.data)
+        }else{
+          message.error(result.msg)
         }
-        console.log(result.data)
-        this.props.history.replace('/')
       } else {
         // 表单验证失败
         message.error("账号密码格式不正确")

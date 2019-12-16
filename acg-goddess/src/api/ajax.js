@@ -22,12 +22,10 @@ axios.interceptors.request.use(config => {
     // 设置请求头
     config.headers.authorization = token
   }
-  console.log(config)
   return config
 })
 // 响应拦截器
 axios.interceptors.response.use(response => {
-  console.log(response)
   return response.data
 }, error => {
   message.error('请求出错' + error.message)

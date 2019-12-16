@@ -16,7 +16,6 @@ router.post('/api/login', async (req, res) => {
   const { username, password } = req.body;
 
   const user = await Users.findOne({username, password: md5(password)}, {password: 0, __v: 0});
-  console.log(user)
   if (!user) {
     return res.json({
       status: 1,

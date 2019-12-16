@@ -1,6 +1,6 @@
 // 创建
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link, Switch, Redirect, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Switch, withRouter, Route } from 'react-router-dom'
 // 引入 routes 
 import routes from './config/routes.js'
 import Login from './components/Login/Login'
@@ -26,7 +26,6 @@ class App extends Component {
               }
             </Switch>
           </BasicLayout>
-          {/* <Redirect to="/"></Redirect> */}
         </Switch>
       </Router>
     );

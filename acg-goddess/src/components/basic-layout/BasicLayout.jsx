@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 import logo from '../../img/logo.png'
 // 引入样式
 import './BasicLayout.css'
-
+import CheckoutAdmin from '../Checkout/CheckoutAdmin'
 // 引入antd
 import { Layout, Breadcrumb } from 'antd';
 import LeftNav from './LeftNav/LeftNav.jsx';
 const { Header, Content, Footer, Sider } = Layout;
 
 
-
+// @CheckoutAdmine
 class BasictLayout extends Component {
   state = {
     collapsed: false,
@@ -20,6 +20,7 @@ class BasictLayout extends Component {
     this.setState({ collapsed });
   };
   render () {
+    console.log(this.props)
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse} >
