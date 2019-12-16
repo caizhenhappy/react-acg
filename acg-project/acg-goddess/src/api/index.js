@@ -38,14 +38,14 @@ export const reqRemoveUser = (id) => ajax({
 // author: 文章作者
 // createTime: 创建时间
 // mian: 文章内容
-export const reqAddArt = ({title, author, createTime, mian}) => ajax({
+export const reqAddArt = ({title, author, createTime, main}) => ajax({
   method: 'POST',
   url: '/addArt',
   data: {
     title,
     author,
     createTime,
-    mian
+    main
   }
 })
 //删除文章

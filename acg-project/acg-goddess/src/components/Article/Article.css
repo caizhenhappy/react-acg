@@ -1,26 +1,6 @@
-.article{
-  width: 100%;
-  height:100%;
-  text-align: center;
+.ant-btn > i, .ant-btn > span {
+  margin: 5px;
 }
-.titleBtn{
-  margin-top: 15px;
-  width: 100px;
-}
-.articleList{
-  width: 100%;
-  display: flex;
-  flex-wrap:wrap;
-  padding-top:30px;
-}
-.ant-card{
-  margin: 23px auto ;
-  width: 40% !important;
-}
-.ant-card-body{
-  background-color: rgba(0, 0, 0, 0.1);
-}
-.btn{
-  display: flex;
-  justify-content:space-around
+.ant-modal-footer{
+  display: none !important;
 }

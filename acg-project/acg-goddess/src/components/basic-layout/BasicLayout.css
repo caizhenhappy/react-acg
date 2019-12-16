@@ -10,7 +10,9 @@
   font-size:30px;
   line-height: 30px;
   text-align: center;
-  color:'#6C7B95';
+  color:'#A9A9A9' !important;
+  padding-top: 20px;
+  
 }
 .ant-layout.ant-layout-has-sider > .ant-layout, .ant-layout.ant-layout-has-sider > .ant-layout-content{
   overflow-y: hidden;

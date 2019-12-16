@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // 引入logo图片
-import logo from '../../img/logo.png'
+import logo from '../../assets/images/logo.png'
 // 引入样式
 import './BasicLayout.css'
 //beijing tyu pian 
@@ -8,6 +8,8 @@ import Background  from './ia_500000004.jpg'
 // 引入antd
 import { Layout, Breadcrumb } from 'antd';
 import LeftNav from './LeftNav/LeftNav.jsx';
+
+
 const { Header, Content, Footer, Sider } = Layout;
 
 
@@ -38,7 +40,7 @@ class BasictLayout extends Component {
           <LeftNav />
        </Sider>
         <Layout >
-          <Header style={{ padding: 23, }} className='header'>
+          <Header className='header'>
             ACG 女神管理系统
           </Header>
           <Content style={{ margin: '0 16px' }}>
