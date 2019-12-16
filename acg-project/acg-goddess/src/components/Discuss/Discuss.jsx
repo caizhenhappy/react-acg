@@ -87,8 +87,7 @@ class Discuss extends Component {
         }
       })
     }
-
-
+    
   // 点击取消
   render () {
     const { columns } = this

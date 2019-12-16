@@ -38,6 +38,7 @@ componentDidMount(){
               </div>
             </Carousel>
             <ul className="admin-list">
+              
               <li className="adminListItem">
                 <div className="listItemHeader">
                   <h3>游戏</h3>
