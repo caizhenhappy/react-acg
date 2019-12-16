@@ -1,6 +1,6 @@
-import { GET_DATA, ADD_USER, REMOVE_USER, ADD_ART, REMOVE_ART, REMOVE_COM , SAVE_USER } from './action-types'
+import { GET_DATA, ADD_USER, REMOVE_USER, ADD_ART, REMOVE_ART, REMOVE_COM , SAVE_USER ,UPDATE_USER} from './action-types'
 //引入请求方法
-import { reqGetDate, reqAddUser, reqRemoveUser, reqAddArt, reqRemoveArt, reqRemoveCom } from '../api/index'
+import { reqGetDate, reqAddUser, reqRemoveUser, reqAddArt, reqRemoveArt, reqRemoveCom,reqUpdateUser } from '../api/index'
 
 import axios from 'axios'
 
@@ -39,9 +39,28 @@ export const removeUser = (id) => {
     const result = await reqRemoveUser(id)
     if (result.code === 0) {
       disptach(removeUserSuccess(result.user))
+      console.log('删除成功')
     }
   }
 }
+
+//修改用户同步
+const updateUserSuccess = (user) => ({ type: UPDATE_USER, data: user })
+//修改用户异步
+export const updateUser = (id,priceurl,username) => {
+  return async (disptach) => {
+    const result = await reqUpdateUser(id,priceurl,username)
+    console.log('11111',result)
+    if (result.code === 0) {
+      disptach(updateUserSuccess(result.user))
+      console.log('修改成功')
+      disptach(getDataSuccess(result))
+    }
+  }
+}
+
+
+
 //文章的操作
 //添加文章
 //同步ACTION

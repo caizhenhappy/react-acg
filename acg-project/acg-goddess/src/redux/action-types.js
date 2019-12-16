@@ -6,6 +6,8 @@ export const GET_DATA = 'get_data'
 export const ADD_USER = 'add_user'
 //移除用户
 export const REMOVE_USER = 'remove_user'
+//修改用户
+export const UPDATE_USER = 'update_user'
 
 //文章操作===============
 //添加文章

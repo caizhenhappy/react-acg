@@ -32,6 +32,26 @@ export const reqRemoveUser = (id) => ajax({
     id
   }
 })
+//用户详情
+//id : 用户id
+export const reqDetailUser = (id) => ajax({
+  method: 'POST',
+  url: '/detailUser',
+  data: {
+    id
+  }
+})
+//修改用户
+//id : 用户id
+export const reqUpdateUser = (id,priceurl,username) => ajax({
+  method: 'POST',
+  url: '/updateUser',
+  data: {
+    id,
+    priceurl,
+    username
+  }
+})
 //文章操作=======
 //添加文章
 // title: 文章标题

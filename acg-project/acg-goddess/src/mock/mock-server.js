@@ -32,6 +32,17 @@ Mock.mock('/addUser', (options) => {
   localStorage.setItem('data', JSON.stringify(data))
   return data
 })
+//用户详情
+//传入Id444
+Mock.mock('/detailUser', (options) => {
+  let id = qs.parse(options.body)
+  const data = JSON.parse(localStorage.getItem('data')) || datas
+  //筛序下的数据
+   data.user = data.user.filter(item => item.id == +id.id)
+  // localStorage.removeItem('data')
+  // localStorage.setItem('data', JSON.stringify(data))
+  return data.user
+})
 //删除用户
 //传入Id444
 Mock.mock('/removeUser', (options) => {
@@ -42,6 +53,41 @@ Mock.mock('/removeUser', (options) => {
   localStorage.removeItem('data')
   localStorage.setItem('data', JSON.stringify(data))
   return data
+})
+//修改用户
+Mock.mock('/updateUser', (options) => {
+  let id = qs.parse(options.body)
+  const data = JSON.parse(localStorage.getItem('data')) || datas
+  //筛序下的数据
+   data.user.forEach(item=>{
+    if(item.id==id.id){
+      console.log(item,id)
+      item.userName=id.username
+      item.userImg=id.priceurl
+      item.code=0
+    }
+  })
+  localStorage.removeItem('data')
+  localStorage.setItem('data', JSON.stringify(data))
+  console.log("dat",data)
+  return data
+  
+  // data.user[0].code = 0
+  // data.user[0].id = id.id
+  // data.user[0].userName = id.username
+  // data.user[0].userImg = id.priceurl
+  //console.log(data.user)
+  // if(data.user[0].id==id.id){
+  //   const newUser ={}
+  //   newUser.id = id.id
+  //   newUser.username = id.username
+  //   newUser.priceurl = id.priceurl
+  //   console.log(newUser)
+  //   return newUser
+  // }
+  //localStorage.removeItem('data')
+  //localStorage.setItem('data', JSON.stringify(data))
+  //return data.user
 })
 //获取用户
 //文章的操作

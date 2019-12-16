@@ -29,6 +29,7 @@ class BasictLayout extends Component {
     this.setState({ collapsed });
   };
   render () {
+    console.log(this.props.children)
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse} >
