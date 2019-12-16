@@ -36,6 +36,7 @@
 /* 内容区样式 */
 .ant-carousel{
   margin-top: 50px;
+  height: 500px;
 }
 .ant-tabs-bar{
   opacity: .9;
@@ -67,11 +68,15 @@
 /* 轮播图样式 */
 .ant-carousel .slick-slide {
   width: 65%;
+
   text-align: center;
   height: 350px;
   line-height: 350px;
   background: #364d79;
   overflow: hidden;
+}
+.ant-carousel .slick-slider,.slick-slider .slick-list,.ant-carousel .slick-slider .slick-track,.ant-carousel .slick-slide{
+  height: 100%;
 }
 .ant-carousel .slick-slide img {
   width: 100%;
@@ -121,6 +126,10 @@ svg:not(:root){
   padding: 30px;
   margin-top:20px;
   background-color: rgba(249, 244,241,0.7);
+}
+.adminListItem img{
+  width: 100%;
+  height: 350px;
 }
 /* 列表右侧用户信息样式 */
 .ant-card-head {
